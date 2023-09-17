@@ -18,6 +18,7 @@ export interface AuthState {
 interface forArgs {
   email: string;
   password: string;
+  username: string,
 }
 
 const initialState: AuthState = {
@@ -32,7 +33,7 @@ export const registr = createAsyncThunk(
   "reg/user",
   async ({ email, password }: forArgs,) => {
     try {
-      const response = await axios.post("http://localhost:9000/auth", {
+      const response = await axios.post("http://localhost:4000/auth", {
         email,
         password,
       });
@@ -54,7 +55,7 @@ export const signIn = createAsyncThunk(
   "log/user",
   async ({ email, password }: forArgs,) => {
     try {
-      const response = await axios.post("http://localhost:9000/login", {
+      const response = await axios.post("http://localhost:4000/login", {
         email,
         password,
       });
