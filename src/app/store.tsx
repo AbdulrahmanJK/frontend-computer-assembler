@@ -1,12 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from '../store/AuthSlice';
-import postReducer from '../store/PostSlice';
-import commentReducer from '../store/CommentSlice';
+import authReducer from '../features/AuthSlice'
 
 const reducer = {
-  authReducer,
-  postReducer, // Используется имя среза, как оно экспортируется
-  commentReducer,
+  authReducer
 };
 
 export const store = configureStore({
