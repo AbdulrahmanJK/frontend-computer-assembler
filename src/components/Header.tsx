@@ -6,6 +6,7 @@ import img1 from './img/logo.jpg'
 import img2 from './img/user.svg'
 import style from './Header/header.module.css'
 import { RootState } from "../app/store";
+import { CarouselHome } from "./cssComponent/Carousel";
 function Header() {
   const getTok = useSelector((state: RootState) => state.authReducer.token);
 
@@ -25,10 +26,8 @@ function Header() {
         </div>
         <div>
           {getTok ? (<Link to="logroom"><img src={img2} alt="" /></Link>) : (<Link to="auth"><img src={img2} alt="" /></Link>)}
-          <span></span>
-          <span></span>
+         
         </div>
-        
     </div>
   );
 }

@@ -6,6 +6,11 @@
     display: flex;
     padding-left: 10px;
     padding-top: 10px;
+    cursor: pointer;
+}
+.title a{
+    text-decoration: none;
+    color: white;
 }
 .compl{
     color: white;
@@ -15,4 +20,42 @@
 }
 .title:hover{
     background: linear-gradient(to bottom right,#242238, #6629FF);
+}
+.rodblock_assem{
+    display: flex;
+}
+.two_block img{
+    width: 90px;
+    height: 90px;
+
+}
+.two_block{
+    padding-left: 10px;
+    padding-top: 10px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #242630;
+    color: white;
+    width: 110%;
+    border-bottom: 1px solid #5a5664;
+    padding: 20px;
+    margin-left: 7%;
+}
+.twoRod{
+    margin-top: 7.39%;
+}
+.title_acces{
+    width: 314px;
+}
+.price{
+    width: 65px;
+}
+.button button{
+    width: 120px;
+    height: 36px;
+    color: #6629FF;
+    background-color: transparent;
+    border: 1px solid #8888FF;
+    
 }
