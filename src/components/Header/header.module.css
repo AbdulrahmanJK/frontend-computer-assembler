@@ -12,6 +12,8 @@
 font-family: 'Josefin Sans', sans-serif;
 font-family: 'Open Sans', sans-serif;
 font-family: 'Oswald', sans-serif;
+position: relative;
+z-index: 1;
 }
 .three_span{
     display: flex;
@@ -28,4 +30,27 @@ font-family: 'Oswald', sans-serif;
 }
 .three_span a:hover{
     color: #d3ae37;
+}
+.cart {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin-left: 15px;
+}
+.cart img {
+    width: 30px;
+    height: 30px;
+}
+.shopCart {
+    position: absolute;
+    width: 450px;
+    min-height: 150px;
+    top: 65px;
+    background-color: cyan;
+    box-shadow: 20px -16px teal;
+    right: 50px;
+    z-index: 0;
 }
