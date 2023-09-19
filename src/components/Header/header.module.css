@@ -1,0 +1,31 @@
+.logo img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.header{
+    background-color: #141414;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Oswald', sans-serif;
+}
+.three_span{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    font-size: 20px;
+    color: #FFFFFF;
+ 
+}
+.three_span a{
+    text-decoration: none;
+    color: #FFFFFF;
+
+}
+.three_span a:hover{
+    color: #d3ae37;
+}
