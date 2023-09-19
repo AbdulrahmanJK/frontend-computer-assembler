@@ -4,16 +4,19 @@ import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
+import HomePage from "./components/HomePage";
+import Assembling from "./components/Assembling";
 
 function App() {
   return (
     <>
-      <h1>Мы должны оставаться мыми, а они оними</h1>
       <Header />
       <Routes>
+        <Route path="/" element={<HomePage/>}/>
         <Route path="/logRoom" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/auth" element={<Login />} />
+        <Route path="/assem" element={<Assembling />} />
       </Routes>
     </>
   );
