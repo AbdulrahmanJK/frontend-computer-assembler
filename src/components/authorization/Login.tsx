@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../features/AuthSlice";
 import { RootState } from "../../app/store";
 import { AppDispatch } from "../../app/store";
+import style from '../../css/auth.module.css'
+import { useNavigate } from "react-router-dom";
 
 interface LoginForm {
   email: string;
   password: string;
 }
+
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<LoginForm>({
@@ -16,18 +19,30 @@ const Login: React.FC = () => {
     password: "",
   });
 
+  const token =  useSelector((state) => state.authReducer.token);
+  useSelector((state) => state.categorySlice.category);
+
+ 
   const dispatch = useDispatch<AppDispatch>();
   const { status, error } = useSelector((state: RootState) => state.authReducer);
+  const navigate = useNavigate()
+ 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(signIn(formData));
-  };
+    
 
+  };
+  if(token){
+    navigate('/')
+
+  }
   return (
+    <div className={style.rod_auth}>
     <div className="flex justify-center items-center h-screen">
       <div className="w-96 p-8 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <h2 className="text-2xl font-semibold mb-4">Авторизация</h2>
         {status === "loading" && (
           <div className="mb-4">
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
@@ -61,10 +76,11 @@ const Login: React.FC = () => {
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
           >
-            Login
+            Войти
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
