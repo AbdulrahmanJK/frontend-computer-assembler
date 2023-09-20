@@ -6,6 +6,7 @@ import img2 from '../img/photo2.jpg'
 import img3 from '../img/photo3.jpg'
 import img4 from '../img/photo4.png'
 import img5 from '../img/photo6.jpg'
+import { Link } from "react-router-dom";
 
  
 export function CarouselHome() {
@@ -22,9 +23,9 @@ export function CarouselHome() {
               alt="First slide"
             />
     <div>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-      <a href="">Подробнее</a>
+      <h3></h3>
+      <Link to="/category/650812559113012b9f747d0b">Перейти</Link>
+      
     </div>
   </li>
 </ul>
@@ -44,9 +45,7 @@ export function CarouselHome() {
               alt="First slide"
             />
     <div>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-      <a href="">Подробнее</a>
+      <Link to="/category/650812629113012b9f747d0d">Перейти</Link>
     </div>
   </li>
 </ul>
