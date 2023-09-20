@@ -25,7 +25,7 @@ function Header() {
           {" "}
           <span>Конфигуратор ПК</span>
         </Link>
-        <span>Комплектующие</span>
+       <Link to="assort"> <span>Комплектующие</span></Link>
         <Link to="/">
           {" "}
           <span>Главная</span>

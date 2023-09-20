@@ -1,0 +1,45 @@
+.rod_block{
+    display: flex;
+    flex-wrap: wrap;
+    width:80%;
+    
+}
+.image img {
+    width: 150px;
+    height: 150px;
+}
+.title{
+    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+   
+}
+.keys{
+width: 350px;
+    background: #242630;
+    align-items: center;
+    margin: 0 20px;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+}
+.keys button{
+    margin-top: 12px;
+    border: 1px solid #6629FF;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 7px;
+}
+.keys button:hover{
+    background: linear-gradient(to bottom right,#242238, #6629FF)
+
+}
+.rod_rod{
+    display: flex;
+    justify-content: center;
+}
+.keys:hover{
+    background: linear-gradient(to bottom right,#08042d, #66509f)
+}
