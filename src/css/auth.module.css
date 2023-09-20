@@ -1,0 +1,10 @@
+.rod_auth{
+    position: absolute;
+    left: 35%;
+    width: 30%;
+    bottom: 45%;
+}
+.rod_auth button{
+border: none;
+background-color: black;
+}

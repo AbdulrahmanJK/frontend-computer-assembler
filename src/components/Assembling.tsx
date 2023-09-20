@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCategory } from "../features/CategorySlice";
 import { Carousel } from "react-bootstrap";
 import { CarouselHome } from "./cssComponent/Carousel";
 import style from "../css/assembling.module.css";
-import { fetchAccessories, fetchAccessoriesCategory } from "../features/AccessoriesSlice";
+import { fetchAccessories, fetchAccessoriesCategory, fetchOneAccessories } from "../features/AccessoriesSlice";
 import { Link, Route, Routes } from "react-router-dom";
 import AssemblSort from "./AssemblSort";
 import { AppDispatch } from "../app/store";
+import OneAcces from "./OneAcces";
+import One from "./One";
 
 function Assembling() {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +24,11 @@ function Assembling() {
 
   const handleClick = (id)=>{
     dispatch(fetchAccessoriesCategory(id))
+    console.log(id);
   }
+  
+  console.log(accessories);
+  
   return (
     <div className={style.rodblock_assem}>
       <div>
@@ -40,18 +46,7 @@ function Assembling() {
         })}
       </div>
       <div className={style.twoRod}>
-        {accessories.map((acces)=>{
-          return(
-            <div >
-            <div className={style.two_block}>
-              <div><img src={acces.image} alt="" /></div>
-              <div className={style.title_acces}><span>{acces.title}</span></div>
-              <div className={style.price}><span>{acces.price}₽</span></div>
-              <div className={style.button}><button>Добавить</button></div>
-            </div>
-            </div>
-          )
-        })}
+        {accessories.map((acces)=> <One acces={acces}/>)}
       </div>
     </div>
   );

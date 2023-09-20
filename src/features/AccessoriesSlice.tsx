@@ -52,6 +52,18 @@ export const fetchAccessoriesCategory = createAsyncThunk(
     }
 )
 
+export const fetchOneAccessories = createAsyncThunk("fetch/one",
+async (id)=>{
+    try {
+        const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
+        const accessories = res.data
+        return accessories
+    } catch (error) {
+        error
+    }
+}
+)
+
 const accessoriesSlice = createSlice({
     name:"accessories",
     initialState,
@@ -62,6 +74,9 @@ const accessoriesSlice = createSlice({
             state.accessories = action.payload
         })
         .addCase(fetchAccessoriesCategory.fulfilled,(state,action)=>{
+            state.accessories = action.payload
+        })
+        .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
             state.accessories = action.payload
         })
     },

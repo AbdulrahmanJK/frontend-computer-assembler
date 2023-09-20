@@ -23,6 +23,8 @@
 }
 .rodblock_assem{
     display: flex;
+    
+   
 }
 .two_block img{
     width: 90px;
@@ -58,4 +60,22 @@
     background-color: transparent;
     border: 1px solid #8888FF;
     
+}
+.button:hover{
+    background: linear-gradient(to bottom right,#242238, #6629FF)
+}
+.title_acces{
+    display: flex;
+    flex-direction: column;
+}
+.oneSpan{
+   color: #6629FF; 
+   cursor: pointer;
+}
+.tit_span{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
 }
