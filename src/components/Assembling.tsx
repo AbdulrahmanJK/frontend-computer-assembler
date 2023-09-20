@@ -17,6 +17,7 @@ function Assembling() {
   const accessories = useSelector((state) => state.accessoriesSlice.accessories)
 
 
+
   useEffect(() => {
     dispatch(fetchCategory());
     dispatch(fetchAccessories());
@@ -24,13 +25,15 @@ function Assembling() {
 
   const handleClick = (id)=>{
     dispatch(fetchAccessoriesCategory(id))
-    console.log(id);
+
   }
   
   console.log(accessories);
   
   return (
+       <> <CarouselHome/>
     <div className={style.rodblock_assem}>
+
       <div>
         <div className={style.compl}>
           <span>Комплектация</span>
@@ -39,7 +42,7 @@ function Assembling() {
         {category.map((item) => {
           return (
             <div onClick={()=>handleClick(item._id)} className={style.title}>
-                <span>{item.title}</span>
+               <div> <span>{item.title}</span></div>
               
             </div>
           );
@@ -49,6 +52,7 @@ function Assembling() {
         {accessories.map((acces)=> <One acces={acces}/>)}
       </div>
     </div>
+    </>
   );
 }
 

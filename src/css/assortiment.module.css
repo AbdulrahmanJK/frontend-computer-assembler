@@ -1,0 +1,32 @@
+.assort_block{
+    height: 220px;
+    width: 220px;
+    background: #242630;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    margin-top: 20px;
+    color: white;
+    transition: 1s;
+    cursor: pointer;
+}
+.rod_assort{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+   margin: auto;
+    font-family: 'Cormorant Garamond', serif;
+font-family: 'Roboto Slab', serif;
+}
+.rod_rod{
+    display: flex;
+    justify-content: center;
+}
+
+.assort_block:hover{
+    transform: scale(1.1);
+}
+.rod_assort a{
+    text-decoration: none;
+}
