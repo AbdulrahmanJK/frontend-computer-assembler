@@ -1,11 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios"; // Импортируйте библиотеку axios
+import axios from "axios";
 
 export interface User {
-  id: string
+  id: string;
   username: string;
   password: string;
   roles: string;
+}
+
+export interface CurrentUser {
+  id: string;
+  username: string;
+  email: string;
+  // Другие поля, которые вы хотите хранить о пользователе
 }
 
 export interface AuthState {
@@ -13,25 +20,27 @@ export interface AuthState {
   token: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
+  currentUser: CurrentUser | null;
 }
 
 interface forArgs {
   email: string;
   password: string;
-  username: string,
+  username: string;
 }
 
 const initialState: AuthState = {
   users: [],
-  token: null,
+  token: localStorage.getItem("token"),
   status: "idle",
   error: null,
+  currentUser: null, // Начальное значение для текущего пользователя
 };
 
 // Создайте асинхронные Thunk-функции для регистрации и входа
 export const registr = createAsyncThunk(
   "reg/user",
-  async ({ email, password }: forArgs,) => {
+  async ({ email, password }: forArgs) => {
     try {
       const response = await axios.post("http://localhost:4000/auth", {
         email,
@@ -51,9 +60,28 @@ export const registr = createAsyncThunk(
   }
 );
 
+
+export const fetchUserData = createAsyncThunk(
+  "user/fetchUserData",
+  async (token: string) => {
+    try {
+      const response = await axios.get("http://localhost:4000/getMe", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+
 export const signIn = createAsyncThunk(
   "log/user",
-  async ({ email, password }: forArgs,) => {
+  async ({ email, password }: forArgs) => {
     try {
       const response = await axios.post("http://localhost:4000/login", {
         email,
@@ -73,7 +101,7 @@ export const signIn = createAsyncThunk(
   }
 );
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
@@ -84,6 +112,16 @@ const authSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.token = action.payload;
+      })
+      .addCase(fetchUserData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUserData.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.currentUser = action.payload.user; // Проверьте, какой путь к username на сервере
+        state.status = "succeeded";
       });
   },
 });
