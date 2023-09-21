@@ -40,8 +40,8 @@ const Login: React.FC = () => {
   }
   return (
     <div className={style.rod_auth}>
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-96 p-8 bg-white rounded shadow-md">
+    <div className="flex justify-center items-center ">
+      <div className="w-96 p-8 bg-white rounded shadow-md block">
         <h2 className="text-2xl font-semibold mb-4">Авторизация</h2>
         {status === "loading" && (
           <div className="mb-4">
