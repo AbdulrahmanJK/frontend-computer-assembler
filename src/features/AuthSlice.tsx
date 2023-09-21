@@ -23,7 +23,7 @@ interface forArgs {
 
 const initialState: AuthState = {
   users: [],
-  token: null,
+  token: localStorage.getItem("token"),
   status: "idle",
   error: null,
 };
@@ -72,6 +72,19 @@ export const signIn = createAsyncThunk(
     }
   }
 );
+
+export const fetchUsers = createAsyncThunk(
+  "fetch/users",
+  async (_)=>{
+    try {
+      const res = await axios.get("http://localhost:4000/getMe")
+      const data = res.data
+      return data
+    } catch (error) {
+      error
+    }
+  }
+)
 
 const authSlice = createSlice({
   name: "auth",

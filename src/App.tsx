@@ -8,6 +8,10 @@ import Profile from "./components/Profile";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import Assembling from "./components/Assembling";
+import { CarouselHome } from "./components/cssComponent/Carousel";
+import Assortiment from "./components/Assortiment";
+import OneCategory from "./components/OneCategory";
+
 
 function App() {
   
@@ -22,6 +26,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/auth" element={<Login />} />
         <Route path="/assem" element={<Assembling />} />
+        <Route path="/category/:id" element={<OneCategory/>} />
+        <Route path="/assort" element={<Assortiment/>} />
+
       </Routes>
     </>
   );
