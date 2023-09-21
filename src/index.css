@@ -1,7 +1,10 @@
-body{
-    background-color: #1B1C24;
-    font-family: 'Cormorant Garamond', serif;
-    font-family: 'Josefin Sans', sans-serif;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Oswald', sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  background-color: #1b1c24;
+  font-family: "Cormorant Garamond", serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Oswald", sans-serif;
 }

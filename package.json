@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.2",
+    "@react-three/drei": "^9.84.1",
     "@react-three/fiber": "^8.14.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/three": "^0.156.0",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
+    "maath": "^0.9.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",

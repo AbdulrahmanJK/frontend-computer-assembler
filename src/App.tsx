@@ -10,12 +10,13 @@ import HomePage from "./components/HomePage";
 import Assembling from "./components/Assembling";
 
 function App() {
+  
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/sborshik" element={<Test />} />
 
+        <Route path="/sborshik" element={<Test />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/logRoom" element={<Profile />} />
         <Route path="/register" element={<Register />} />
