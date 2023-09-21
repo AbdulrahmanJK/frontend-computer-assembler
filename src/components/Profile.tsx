@@ -1,37 +1,38 @@
-// Profile.tsx
-
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileEditPopup from './authorization/PatchProfile';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../app/store';
-import { fetchUsers } from '../features/AuthSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../app/store';
+import { fetchUserData } from '../features/AuthSlice';
 
 const Profile = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const users = useSelector((state) => state.authReducer.users)
-  const dispatch = useDispatch<AppDispatch>()
-  console.log(users);
-  
-  useEffect(() => {
-    dispatch(fetchUsers())
-  }, [dispatch]);
+  const user = useSelector((state: RootState) => state.authReducer.currentUser);
+  const token = useSelector((state: RootState) => state.authReducer.token);
+  const dispatch = useDispatch();
 
   const handleEditClick = () => {
     setIsPopupOpen(true);
   };
 
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUserData(token)).then(() => {
+        console.log(user?.username);
+      });
+    }
+  }, [dispatch, token]);
+  console.log(user?.username)
   return (
-    <div>
+    <div className="text-white">
       <h2>Личный кабинет</h2>
-      {users.map((item)=>{
-        return(
-          <div>
-            <span>{item.username}</span>
-
-          </div>
-        )
-      })}
-      <p>Email: ivan@example.com</p>
+      {user ? ( // Проверяем, что user не является null или undefined
+        <>
+          <p>Имя пользователя: {user.username}</p>
+          <p>Email: {user.email}</p>
+        </>
+      ) : (
+        <p>Загрузка данных...</p>
+      )}
       <button onClick={handleEditClick}>Изменить профиль</button>
 
       {isPopupOpen && <ProfileEditPopup onClose={() => setIsPopupOpen(false)} />}
