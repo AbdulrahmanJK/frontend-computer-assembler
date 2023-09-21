@@ -2,14 +2,23 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import cart from "./img/cart2.png";
+import Cart from "./Cart";
 import img1 from "./img/logo.jpg";
 import img2 from "./img/user.svg";
+import cart2 from './img/cart2.png'
 import style from "./Header/header.module.css";
 import { RootState } from "../app/store";
 function Header() {
-  let [cartOpen, setCartOpen] = useState(false);
   const getTok = useSelector((state: RootState) => state.authReducer.token);
+  const [isCartVisible, setCartVisible] = useState(false);
+  const cartItemsCount = useSelector(
+    (state: RootState) => state.CartSlice.items.length
+  );
+  console.log(cartItemsCount);
+
+  const toggleCart = () => {
+    setCartVisible(!isCartVisible);
+  };
 
   useEffect(() => {
     getTok;
@@ -25,20 +34,22 @@ function Header() {
           {" "}
           <span>Конфигуратор ПК</span>
         </Link>
-       <Link to="assort"> <span>Комплектующие</span></Link>
+        <Link to="assort"> <span>Комплектующие</span></Link>
         <Link to="/">
           {" "}
           <span>Главная</span>
         </Link>
       </div>
 
-      <div>
-        <button
-          className={style.cart}
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
-        >
-          <img src={cart} />
-        </button>
+      
+        <div className={style.cartIcon} onClick={toggleCart}>
+          <button className={style.cart}
+            onClick={() => { <div >{isCartVisible && <Cart />}</div> }
+            }>
+            <img src={cart2} /></button>
+          {/* Cart ({cartItemsCount}) */}
+        
+        {isCartVisible && <Cart />}
         {getTok ? (
           <Link to="logroom">
             <img src={img2} alt="" />
@@ -48,7 +59,6 @@ function Header() {
             <img src={img2} alt="" />
           </Link>
         )}
-        {cartOpen && <div className={style.shopCart}></div>}
         <span></span>
         <span></span>
       </div>
