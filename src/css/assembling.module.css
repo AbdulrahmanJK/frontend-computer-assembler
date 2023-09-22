@@ -27,6 +27,7 @@
 }
 .rodblock_assem{
     display: flex;
+    justify-content: center;
     
    
 }
@@ -52,7 +53,8 @@
     margin-left: 7%;
 }
 .twoRod{
-    margin-top: 7.39%;
+    margin-top: 90px;
+    width: auto;
 }
 .title_acces{
     width: 314px;
