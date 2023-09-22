@@ -49,7 +49,7 @@ function Assembling() {
           
         </div>
 
-        {category.map((item) => {
+        {category?.map((item) => {
           return (
             <div onClick={()=>handleClick(item._id)} className={style.title}>
                <div> <span>{item.title}</span></div>
@@ -68,7 +68,7 @@ function Assembling() {
         })}
       </div>
       <div className={style.twoRod}>
-        {accessories.map((acces)=> <One handleOpenClick={handleOpenClick} acces={acces}/>)}
+        {accessories?.map((acces)=> <One handleOpenClick={handleOpenClick} acces={acces}/>)}
       </div>
     </div>
     </>
