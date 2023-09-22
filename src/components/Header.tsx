@@ -42,21 +42,19 @@ function Header() {
           {" "}
           <span>Главная</span>
         </Link>
-      </div>
+      </div>      
+        <div className={style.cartIcon} >
+          <div onClick={toggleCart}>
 
-      <div className={style.cartIcon}>
-        <div className={style.cartIcon} onClick={toggleCart}>
-          <button
-            className={style.cart}
-            onClick={() => {
-              <div>{isCartVisible && <Cart />}</div>;
-            }}
-          >
-            <img src={cart2} />
-          </button>
-          {/* Cart ({cartItemsCount}) */}
-          {isCartVisible && <Cart />}
-        </div>
+          <button className={style.cart}
+            onClick={() => { <div >{isCartVisible && <Cart />}</div> }
+          }>
+            <img src={cart2} /></button>
+          
+              </div>
+        
+        {isCartVisible && <Cart />}
+
         {getTok ? (
           <Link to="logroom">
             <img src={img2} alt="" />
@@ -66,8 +64,6 @@ function Header() {
             <img src={img2} alt="" />
           </Link>
         )}
-        <span></span>
-        <span></span>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react'
 import style from '../css/assembling.module.css'
 import OneAcces from './OneAcces';
 
-function One({acces}) {
+function One({acces,handleOpenClick}) {
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => {
         setOpen(!open)
@@ -27,7 +27,7 @@ function One({acces}) {
             <span>{acces.price}₽</span>
           </div>
           <div className={style.button}>
-            <button>Добавить</button>
+            <button onClick={()=>handleOpenClick(acces._id)}>Добавить</button>
           </div>
         </div>
       </div>

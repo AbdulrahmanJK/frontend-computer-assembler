@@ -5,8 +5,9 @@
     
 }
 .image img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 .title{
     font-family: 'Cormorant Garamond', serif;
@@ -42,4 +43,11 @@ width: 350px;
 }
 .keys:hover{
     background: linear-gradient(to bottom right,#08042d, #66509f)
+}
+.title{
+    margin-top: 10px;
+}
+.price{
+    color: #6629FF;
+    font-size: 20px;
 }
