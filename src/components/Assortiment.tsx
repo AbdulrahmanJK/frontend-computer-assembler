@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategory } from "../features/CategorySlice";
 import { AppDispatch } from "../app/store";
 import style from '../css/assortiment.module.css'
-import { fetchAccessoriesCategory } from "../features/AccessoriesSlice";
 import { Link } from "react-router-dom";
 
 function Assortiment() {

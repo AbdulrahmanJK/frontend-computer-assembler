@@ -54,7 +54,20 @@ export const fetchAccessoriesCategory = createAsyncThunk(
     }
 )
 
+
+
 export const fetchOneAccessories = createAsyncThunk("fetch/one",
+async (id)=>{
+    try {
+        const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
+        const accessories = res.data
+        return accessories
+    } catch (error) {
+        error
+    }
+}
+)
+export const deleteOneAccessories = createAsyncThunk("delete/one",
 async (id)=>{
     try {
         const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
@@ -79,9 +92,15 @@ const accessoriesSlice = createSlice({
             state.accessories = action.payload
         })
         .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
-            console.log(action.payload);
+            // console.log(action.payload);
             
             state.oneAccessori.push(action.payload)
+        })
+        .addCase(deleteOneAccessories.fulfilled,(state, action)=>{
+            // console.log(action.payload);
+            // console.log(state.oneAccessori);
+            
+            state.oneAccessori = state.oneAccessori.filter((item) => item._id !== action.payload._id)
         })
     },
 });

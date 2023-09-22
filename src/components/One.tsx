@@ -1,9 +1,24 @@
 import React from 'react'
 import style from '../css/assembling.module.css'
 import OneAcces from './OneAcces';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../app/store';
+import { deleteOneAccessories } from '../features/AccessoriesSlice';
 
 function One({acces,handleOpenClick}) {
+  const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
+    const [active, setActive] = React.useState(true)
+    
+
+    const handleButton = () => {
+      if (active) {
+        handleOpenClick(acces._id, acces)
+      } else {
+        dispatch(deleteOneAccessories(acces._id))
+      }
+      setActive(!active)
+    }
     const handleOpen = () => {
         setOpen(!open)
         console.log(open);
@@ -27,7 +42,7 @@ function One({acces,handleOpenClick}) {
             <span>{acces.price}₽</span>
           </div>
           <div className={style.button}>
-            <button onClick={()=>handleOpenClick(acces._id)}>Добавить</button>
+            <button  onClick={()=>handleButton()}>{active ? 'Добавить' : 'Удалить'}</button>
           </div>
         </div>
       </div>
