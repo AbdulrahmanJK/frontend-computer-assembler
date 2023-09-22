@@ -7,18 +7,29 @@ import {
 import { Suspense } from "react";
 import Configurator from "./configurator";
 import "../../App.css";
+import { fetchAccessories } from "../../features/AccessoriesSlice";
+
 import { Canvas } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { PointerLockControls } from "https://threejs.org/examples/jsm/controls/PointerLockControls.js";
+import { AppDispatch } from "../../app/store";
+
+
 import { color } from "three/examples/jsm/nodes/Nodes.js";
 const Test = () => {
-  const gltf = useLoader(GLTFLoader, "../public/1.glb");
 
+
+  const gltf = useLoader(GLTFLoader, "http://localhost:4000/static/airplane_vertex_color_unlit.glb");
+  console.log(gltf);
+  
   return (
     <div className="relative  h-full">
       <Canvas>
         <color attach="background" args={["#d0d0d0"]} />
-        <fog attach="fog" args={["#d0d0d0", 10, 20]} />
+        <fog attach="fog" args={["#d0d0d0", 11, 44]} />
         <PresentationControls
           speed={1.5}
           global
@@ -37,9 +48,10 @@ const Test = () => {
             </Suspense>
           </Stage>
           <OrbitControls
-          makeDefault
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 2}
+          minAzimuthAngle={0}
+          maxAzimuthAngle={0}
+          minPolarAngle={Math.PI /2}
+          maxPolarAngle={Math.PI / 6}
           />
  
           <mesh rotation={[-Math.PI / 2, 0, 0]} position-y={-2}>
@@ -62,7 +74,7 @@ const Test = () => {
       </Canvas>
       <Configurator />
     </div>
-  );
+  )
 };
 
 export default Test;

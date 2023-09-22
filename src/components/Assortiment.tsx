@@ -19,7 +19,7 @@ function Assortiment() {
   return (
     <div className={style.rod_rod}>
     <div className={style.rod_assort}>
-    {category.map((item) => {
+    {category?.map((item) => {
       return (
        <Link to={`/category/${item._id}`}> <div   className={style.assort_block}>
         <div className={style.title}>
