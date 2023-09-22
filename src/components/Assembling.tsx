@@ -1,14 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchCategory } from "../features/CategorySlice";
-import { Carousel } from "react-bootstrap";
 import { CarouselHome } from "./cssComponent/Carousel";
 import style from "../css/assembling.module.css";
 import { fetchAccessories, fetchAccessoriesCategory, fetchOneAccessories } from "../features/AccessoriesSlice";
-import { Link, Route, Routes } from "react-router-dom";
-import AssemblSort from "./AssemblSort";
 import { AppDispatch } from "../app/store";
-import OneAcces from "./OneAcces";
 import One from "./One";
 
 function Assembling() {
@@ -16,14 +12,13 @@ function Assembling() {
   const category = useSelector((state) => state.categorySlice.category);
   const accessories = useSelector((state) => state.accessoriesSlice.accessories)
   const oneAcces =  useSelector((state)=> state.accessoriesSlice.oneAccessori)
-  const [text,setText]= useState(null)
+  
 
 
 
   useEffect(() => {
     dispatch(fetchCategory());
     dispatch(fetchAccessories());
-    dispatch(fetchOneAccessories)
 
   }, [dispatch]);
 
@@ -31,11 +26,13 @@ function Assembling() {
     dispatch(fetchAccessoriesCategory(id))
 
   }
-  const handleOpenClick = (id)=>{
-   dispatch(fetchOneAccessories(id))
-    setText(id)
+  const handleOpenClick = (id, acces)=>{ 
+    const inArray = oneAcces.filter((item) => item.category === acces.category)
+    
+    if (inArray.length < 1) {
+      dispatch(fetchOneAccessories(id))  
+    }
   }
-  console.log(oneAcces);
   
   
   

@@ -8,8 +8,12 @@
     padding-left: 10px;
     padding-top: 10px;
     cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Space Grotesk', sans-serif; */
+    /* font-family: 'Rubik Mono One', sans-serif; */
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+
+
     flex-wrap: wrap;
 }
 .title a{
@@ -51,6 +55,8 @@
     border-bottom: 1px solid #5a5664;
     padding: 20px;
     margin-left: 7%;
+    font-family: 'Space Grotesk', sans-serif;
+
 }
 .twoRod{
     margin-top: 90px;
