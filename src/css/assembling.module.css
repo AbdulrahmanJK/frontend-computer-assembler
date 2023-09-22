@@ -1,7 +1,7 @@
 .title{
     color: white;
     width: 290px;
-    height: 120px;
+    height: 140px;
     font-weight: 600;
     border: 0.1px solid #5a5664;
     display: flex;
@@ -10,6 +10,7 @@
     cursor: pointer;
     font-family: 'Cormorant Garamond', serif;
     font-family: 'Roboto Slab', serif;
+    flex-wrap: wrap;
 }
 .title a{
     text-decoration: none;
@@ -32,6 +33,9 @@
 .two_block img{
     width: 90px;
     height: 90px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+
 
 }
 .two_block{
@@ -81,4 +85,19 @@
     margin-bottom: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+.tit_img{
+    display: flex;
+    width: 270px;
+    
+}
+.image_acces img{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+width: 45px;
+height: 44px;
+}
+.title_acces{
+    margin-left: 15px;
+
 }

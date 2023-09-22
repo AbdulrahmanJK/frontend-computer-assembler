@@ -11,6 +11,7 @@ export interface Accessories {
 export interface AccessoriesState {
    accessories:[],
    error: string | null,
+   oneAccessori: []
 }
 
 export interface CreateAccessories {
@@ -22,6 +23,7 @@ export interface CreateAccessories {
 }
 const initialState : AccessoriesState ={
     accessories:[],
+    oneAccessori: [],
     error:null
 }
 
@@ -77,7 +79,9 @@ const accessoriesSlice = createSlice({
             state.accessories = action.payload
         })
         .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
-            state.accessories = action.payload
+            console.log(action.payload);
+            
+            state.oneAccessori.push(action.payload)
         })
     },
 });

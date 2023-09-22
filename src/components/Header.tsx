@@ -42,12 +42,15 @@ function Header() {
       </div>
 
       
-        <div className={style.cartIcon} onClick={toggleCart}>
+        <div className={style.cartIcon} >
+          <div onClick={toggleCart}>
+
           <button className={style.cart}
             onClick={() => { <div >{isCartVisible && <Cart />}</div> }
-            }>
+          }>
             <img src={cart2} /></button>
-          {/* Cart ({cartItemsCount}) */}
+          
+              </div>
         
         {isCartVisible && <Cart />}
         {getTok ? (
@@ -59,8 +62,6 @@ function Header() {
             <img src={img2} alt="" />
           </Link>
         )}
-        <span></span>
-        <span></span>
       </div>
     </div>
   );

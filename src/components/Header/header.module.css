@@ -2,6 +2,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border: 3px solid ;
 }
 .header{
     background-color: #141414;
@@ -38,7 +39,7 @@ z-index: 1;
     cursor: pointer;
     overflow: hidden;
     outline: none;
-    margin-left: 15px;
+    margin-right: 10px;
 }
 .cart img {
     width: 30px;
@@ -63,4 +64,7 @@ z-index: 1;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+.cartIcon{
+    display: flex;
 }

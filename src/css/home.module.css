@@ -1,0 +1,14 @@
+.assembling{
+    box-sizing: border-box;
+}
+.mb{
+}
+.gpu{
+    position: relative;
+    bottom:630px;
+    right: 40px
+    ;
+}
+.gpu img{
+    width: 900px;
+}
