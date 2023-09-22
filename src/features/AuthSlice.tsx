@@ -12,6 +12,7 @@ export interface CurrentUser {
   id: string;
   username: string;
   email: string;
+  avatarURL: string;
   // Другие поля, которые вы хотите хранить о пользователе
 }
 
@@ -59,6 +60,29 @@ export const registr = createAsyncThunk(
     }
   }
 );
+
+export const updateUserData = createAsyncThunk(
+  "user/updateUserData",
+  async ({ id, username, avatarURL, token }: { id: string; username?: string; avatarURL?: string; token: string }) => {
+    try {
+      const response = await axios.patch(`http://localhost:4000/patchUser/${id}`, {
+        username,
+        avatarURL,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+
+
 
 
 export const fetchUserData = createAsyncThunk(
@@ -123,6 +147,10 @@ export const authSlice = createSlice({
       .addCase(fetchUserData.fulfilled, (state, action) => {
         state.currentUser = action.payload.user; // Проверьте, какой путь к username на сервере
         state.status = "succeeded";
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        // Обновите состояние с обновленными данными пользователя
+        state.currentUser = action.payload.user;
       });
   },
 });
