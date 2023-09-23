@@ -14,27 +14,28 @@ export interface Assembling {
 
 }
 export interface AssemblingState {
-   accessories:[],
+   assembling:[],
    error: string | null,
-   oneAccessori: []
 }
 
 export interface CreateAssembling {
-    image: string,
-    title: string,
-    price:number,
-    attributes: string,
-    category: string
+    cpu: string,
+    gpu: string,
+    ram:number,
+    powerblock: string,
+    drive: string,
+    body: string,
+    fan:string,
+    motherboard:string,
 }
 const initialState : AssemblingState ={
-    accessories:[],
-    oneAccessori: [],
+    assembling:[],
     error:null
 }
 
 
 export const fetchAssembling = createAsyncThunk(
-    "Assembling/fetch",
+    "assembling/fetch",
     async(_)=>{
         try {
            const res = await axios.get("http://localhost:4000/assembling") 

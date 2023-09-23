@@ -29,6 +29,8 @@ function Assembling() {
   const handleOpenClick = (id, acces)=>{ 
     const inArray = oneAcces.filter((item) => item.category === acces.category)
     
+    
+    
     if (inArray.length < 1) {
       dispatch(fetchOneAccessories(id))  
     }
