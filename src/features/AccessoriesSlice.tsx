@@ -94,7 +94,9 @@ const accessoriesSlice = createSlice({
         .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
             // console.log(action.payload);
             
-            state.oneAccessori.push(action.payload)
+            state.oneAccessori.unshift(action.payload)
+            console.log(action.payload,);
+            
         })
         .addCase(deleteOneAccessories.fulfilled,(state, action)=>{
             // console.log(action.payload);
