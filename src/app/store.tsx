@@ -3,12 +3,14 @@ import authReducer from '../features/AuthSlice'
 import categorySlice from '../features/CategorySlice'
 import accessoriesSlice from '../features/AccessoriesSlice'
 import CartSlice from "../features/CartSlice";
+import assemblingSlice from '../features/AssemblingSlice'
 
 const reducer = {
   authReducer,
   categorySlice,
   accessoriesSlice,
-  CartSlice
+  CartSlice,
+  assemblingSlice
 };
 
 export const store = configureStore({

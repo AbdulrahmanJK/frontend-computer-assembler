@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export interface Assembling {
+    title: string,
     cpu: string,
     gpu: string,
     ram:number,
@@ -78,9 +79,9 @@ const assemblingSlice = createSlice({
     reducers:{},
     extraReducers: (builder)=>{
         builder
-        // .addCase(fetchAccessories.fulfilled,(state,action)=>{
-        //     state.accessories = action.payload
-        // })
+        .addCase(fetchAssembling.fulfilled,(state,action)=>{
+            state.assembling = action.payload
+        })
         // .addCase(fetchAccessoriesCategory.fulfilled,(state,action)=>{
         //     state.accessories = action.payload
         // })

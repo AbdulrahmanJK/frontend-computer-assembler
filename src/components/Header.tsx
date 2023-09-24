@@ -29,7 +29,7 @@ function Header() {
         <img src={img1} alt="" />
       </div>
       <div className={style.three_span}>
-        <span>Компьютеры</span>
+      <Link to="sborka"> <span>Компьютеры</span></Link> 
         <Link to="assem">
           {" "}
           <span>Конфигуратор ПК</span>
