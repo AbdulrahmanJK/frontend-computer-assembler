@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { registr } from "../../features/AuthSlice";
+import { Link } from "react-router-dom";
 
 interface RegistrationForm {
   email: string;
@@ -18,7 +19,9 @@ const Register: React.FC = () => {
   const [registrationSuccess, setRegistrationSuccess] = useState(false); // Состояние для отслеживания успешной регистрации
 
   const dispatch = useDispatch<AppDispatch>();
-  const { status, error } = useSelector((state: RootState) => state.authReducer);
+  const { status, error } = useSelector(
+    (state: RootState) => state.authReducer
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,6 +77,8 @@ const Register: React.FC = () => {
             Register
           </button>
         </form>
+        <p>Если уже зарегестрированы: </p>
+          <Link to="/auth">Войти</Link>
       </div>
     </div>
   );

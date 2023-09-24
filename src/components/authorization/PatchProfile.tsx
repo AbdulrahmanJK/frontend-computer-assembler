@@ -9,17 +9,16 @@ interface ProfileEditPopupProps {
   onClose: () => void;
   user: User;
   token: string;
-  onProfileUpdated: () => void;
 }
 
-const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, token, onProfileUpdated }) => {
+const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, token }) => {
   const [username, setUsername] = useState<string>('');
   const [avatarURL, setAvatarURL] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [showCamera, setShowCamera] = useState<boolean>(false);
 
   const webcamRef = useRef<Webcam>(null);
-  
+
   const dispatch = useDispatch<AppDispatch>();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,16 +33,14 @@ const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, toke
 
     try {
       await dispatch(updateUserData(updatedProfileData));
-      onProfileUpdated();
       onClose();
     } catch (error) {
-      setError('Cool Photo');
+      setError('Произошла ошибка при обновлении профиля.');
     }
-    window.location.reload();
   };
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (file) {
       try {
         const formData = new FormData();
@@ -51,7 +48,7 @@ const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, toke
         const { data } = await axios.post('http://localhost:4000/upload/img', formData);
         setAvatarURL(`http://localhost:4000${data.url}`);
       } catch (error) {
-        setError('Cool Photo');
+        setError('Произошла ошибка при загрузке изображения.');
       }
     }
   };
@@ -61,7 +58,6 @@ const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, toke
     if (imageSrc) {
       setAvatarURL(imageSrc);
       setShowCamera(false);
-      
     }
   };
 
@@ -111,13 +107,19 @@ const ProfileEditPopup: React.FC<ProfileEditPopupProps> = ({ onClose, user, toke
                     screenshotFormat="image/jpeg"
                     className="rounded border border-gray-300"
                   />
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mt-2" onClick={capture}>
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mt-2"
+                    onClick={capture}
+                  >
                     Захватить
                   </button>
                 </div>
               )}
               {!showCamera && (
-                <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mt-2" onClick={() => setShowCamera(true)}>
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full mt-2"
+                  onClick={() => setShowCamera(true)}
+                >
                   Включить камеру
                 </button>
               )}

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import ProfileEditPopup from './authorization/PatchProfile';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../app/store';
-import { fetchUserData } from '../features/AuthSlice';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import ProfileEditPopup from "./authorization/PatchProfile";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../app/store";
+import { fetchUserData } from "../features/AuthSlice";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Добавлено состояние isLoading
   const user = useSelector((state: RootState) => state.authReducer.currentUser);
   const token = useSelector((state: RootState) => state.authReducer.token);
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
+    localStorage.removeItem("token");
+    navigate("/");
     window.location.reload();
   };
 
@@ -26,36 +27,61 @@ const Profile = () => {
     if (token) {
       dispatch(fetchUserData(token)).then(() => {
         console.log(user?.username);
+        setIsLoading(false);
       });
     }
   }, [dispatch, token]);
 
+  if (isLoading) {
+    return (
+      <div className="bg-gray-1000 h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-purple-500 border-opacity-50"></div>
+        <div role="status">
+          {/* Ваш SVG код прелоадера */}
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="bg-gray-900 h-screen flex flex-col items-center justify-center">
-      <div className="bg-white p-4 rounded-lg shadow-md w-80">
-        <div className="text-center">
+    <div className="bg-gray-1000 font-josefin h-screen flex flex-col items-center justify-center mx-auto">
+      <div className="bg-gray-900 p-6 rounded-lg w-2/3 h-2/3 flex justify-around items-center">
+        <div className="text-center font-josefin">
           {user ? (
+            
             <img
               src={user.avatarURL}
               alt="Аватар"
-              className="w-20 h-20 rounded-full mx-auto mb-2"
+              className="w-40 h-400 rounded-xl aspect-w-3 aspect-h-2 object-contain"
             />
           ) : null}
-          <h2 className="text-2xl font-semibold">{user?.username}</h2>
-          <p className="text-gray-500">{user?.email}</p>
+          <h2 className="text-2xl font-semibold text-white font-josefin">
+            {user?.username}
+          </h2>
+          <p className="text-white">{user?.email}</p>
+
+          {/* Добавьте информацию с адресами */}
+          <p className="text-white mt-4">
+            Адрес: {user?.address ? user.address : "Не указан"}
+          </p>
         </div>
-        <button
-          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
-          onClick={handleEditClick}
-        >
-          Изменить профиль
-        </button>
-        <button
-          className="mt-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full"
-          onClick={handleLogout}
-        >
-          Выйти из аккаунта
-        </button>
+        <div className="flex-col">
+          <div>
+            <button
+              className="mt-4 bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md"
+              onClick={handleEditClick}
+            >
+              Изменить профиль
+            </button>
+          </div>
+          <div>
+            <button
+              className="mt-2 bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md"
+              onClick={handleLogout}
+            >
+              Выйти из аккаунта
+            </button>
+          </div>
+        </div>
       </div>
       {user && isPopupOpen && (
         <ProfileEditPopup user={user} onClose={() => setIsPopupOpen(false)} />
