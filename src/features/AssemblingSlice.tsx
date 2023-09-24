@@ -28,6 +28,7 @@ export interface CreateAssembling {
     body: string,
     fan:string,
     motherboard:string,
+    title: string
 }
 const initialState : AssemblingState ={
     assembling:[],
@@ -72,7 +73,20 @@ async (id)=>{
     }
 }
 )
-
+export const createAssembling = createAsyncThunk("add/assembl",
+async ({cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}:CreateAssembling)=>{
+    try {
+        const res = await axios.post(
+            "http://localhost:4000/assembling",
+            {cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}
+        )
+        const data = res.data
+        return data
+    } catch (error) {
+        error
+    }
+}
+)
 const assemblingSlice = createSlice({
     name:"assembling",
     initialState,
@@ -82,20 +96,14 @@ const assemblingSlice = createSlice({
         .addCase(fetchAssembling.fulfilled,(state,action)=>{
             state.assembling = action.payload
         })
-        // .addCase(fetchAccessoriesCategory.fulfilled,(state,action)=>{
-        //     state.accessories = action.payload
-        // })
-        // .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
-        //     // console.log(action.payload);
+       .addCase(createAssembling.fulfilled,(state,action)=>{
+        state.assembling.push(action.payload)
+       })
+        .addCase(fetchOneAssembling.fulfilled,(state, action)=>{
             
-        //     state.oneAccessori.push(action.payload)
-        // })
-        // .addCase(deleteOneAccessories.fulfilled,(state, action)=>{
-        //     // console.log(action.payload);
-        //     // console.log(state.oneAccessori);
-            
-        //     state.oneAccessori = state.oneAccessori.filter((item) => item._id !== action.payload._id)
-        // })
+            state.assembling = action.payload
+        })
+      
     },
 });
 export default assemblingSlice.reducer

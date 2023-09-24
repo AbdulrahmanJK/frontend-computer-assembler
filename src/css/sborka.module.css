@@ -122,3 +122,18 @@
     flex-direction: column;
     width: 50%;
 }
+.sborki{
+    width: 200px;
+    border: 2px solid #6629FF ;
+    cursor: pointer;
+}
+.sborki:hover{
+    background-color: #6629FF;
+}
+.sborki span{
+color: white;
+}
+.rod_sborki{
+display: flex;
+justify-content: center;
+}

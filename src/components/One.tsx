@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../app/store';
 import { deleteOneAccessories } from '../features/AccessoriesSlice';
 
-function One({acces,handleOpenClick}) {
+function One({acces,handleOpenClick,addAssembling,setTit}) {
   const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
     const [active, setActive] = React.useState(true)
@@ -26,6 +26,7 @@ function One({acces,handleOpenClick}) {
     }
     return (
       <div>
+       
         <div className={style.two_block}>
           <div>
             <img src={acces.image} alt="" />
