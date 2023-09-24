@@ -20,9 +20,13 @@ import { AppDispatch } from "../../app/store";
 
 import { color } from "three/examples/jsm/nodes/Nodes.js";
 const Test = () => {
+  const [model, setModel] = useState("airplane_vertex_color_unlit.glb");
 
-
-  const gltf = useLoader(GLTFLoader, "http://localhost:4000/static/airplane_vertex_color_unlit.glb");
+  useEffect(() => {
+    setModel("AMD Ryzen 5 4500.glb");
+  }, [setModel]);
+  
+  const gltf = useLoader(GLTFLoader, `http://localhost:4000/static/${model}`);
   console.log(gltf);
   
   return (
