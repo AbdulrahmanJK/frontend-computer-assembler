@@ -19,8 +19,7 @@ function Assembling() {
   useEffect(() => {
     dispatch(fetchCategory());
     dispatch(fetchAccessories());
-
-  }, [dispatch]);
+}, [dispatch]);
 
   const handleClick = (id)=>{
     dispatch(fetchAccessoriesCategory(id))

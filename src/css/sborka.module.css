@@ -1,0 +1,124 @@
+.assembling{
+    height: 711px;
+    width: 50%;
+    position: relative;
+}
+.mb{
+    width: 400px;
+    z-index: 3;
+    position: relative;
+    bottom: 687px;
+    left: 33px;
+    cursor: pointer;
+}
+.gpu{
+    position: relative;
+    z-index: 6;
+    width: 400px;
+    bottom: 943px;
+    left: 20px;
+    cursor: pointer;
+
+}
+.cpu{
+    width: 60px;
+    height: 60px;
+    z-index: 4;
+    position: relative;
+    bottom: 1047px;
+    left: 204px;
+    cursor: pointer;
+
+}
+.corpus{
+    width: 760px;
+    z-index: 1;
+    cursor: pointer;
+
+}
+.block{
+    width: 280px;
+    position: relative;
+    z-index: 8;
+    bottom: 817px;
+    left: 28px;
+    cursor: pointer;
+
+}
+.info_mb{
+    width: 40px;
+    z-index: 10;
+    bottom: 430px;
+    left: 200px;
+  transition: 2s;
+  position: absolute;
+}
+.info_mb img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.mb:hover{
+    border: 1px solid #6629FF;
+
+}
+.gpu:hover{
+    border: 1px solid #6629FF;
+
+}
+.cpu:hover{
+    border: 1px solid #6629FF;
+}
+.corpus:hover{
+
+    border: 1px solid #6629FF;
+}
+.block:hover{
+
+    border: 1px solid #6629FF;
+}
+.rod{
+    display: flex;
+}
+.body{
+    margin-top: 20PX;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+    background-color: #242630;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: 1;
+    cursor: pointer;
+
+}
+.body:hover{
+    transform: scale(1.1);
+    border-radius: 6px;
+  background: linear-gradient(to bottom right, #08042d, #66509f)
+}
+.body img{
+    width: 90px;
+    height: 90px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+
+}
+.body button{
+    border: 2px solid #6629FF;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 10px;
+
+}
+.openBlock{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
