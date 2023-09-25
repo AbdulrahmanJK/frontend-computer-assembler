@@ -32,7 +32,7 @@
 .rodblock_assem{
     display: flex;
     justify-content: center;
-    
+    width: auto;
    
 }
 .two_block img{
@@ -107,5 +107,21 @@ height: 44px;
 }
 .title_acces{
     margin-left: 15px;
+
+}
+.testDiv{
+    margin-left: 50px;
+    margin-top: 90px;
+   max-height: 800px;
+   width: 800px;
+}
+.switchThreeJs{
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 90px;
+}
+.switchThreeJs button{
+    color: white;
 
 }
