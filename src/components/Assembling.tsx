@@ -14,6 +14,7 @@ import { AppDispatch } from "../app/store";
 import Test from "../components/threeJsComponents/test";
 
 import One from "./One";
+import { createAssembling } from "../features/AssemblingSlice";
 
 function Assembling() {
   const handleClickThreeJs = () => {
@@ -29,8 +30,15 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
-  console.log(modelslink);
-  console.log(category);
+  const [mb, setMb] = useState("");
+  const [gpu, setGpu] = useState("");
+  const [cpu, setCpu] = useState("");
+  const [block, setBlock] = useState("");
+  const [ram, setRam] = useState("");
+  const [corpus, setCorpus] = useState("");
+  const [drive, setDrive] = useState("");
+  const [fan, setFan] = useState("");
+  const [tit, setTit] = useState("");
 
   useEffect(() => {
     dispatch(fetchCategory());
@@ -47,12 +55,74 @@ function Assembling() {
     if (inArray.length < 1) {
       dispatch(fetchOneAccessories(id));
     }
+    if (acces.category === "650812559113012b9f747d0b") {
+      setGpu(id);
+    }
+    if (acces.category === "650812629113012b9f747d0d") {
+      setCpu(id);
+    }
+    if (acces.category === "650b4bfd64b6a469ea6f9fa7") {
+      setCorpus(id);
+    }
+    if (acces.category === "650d7f6e8ba3dc9cbdf9e4a8") {
+      setBlock(id);
+    }
+    if (acces.category === "650812669113012b9f747d0f") {
+      setRam(id);
+    }
+    if (acces.category === "650812c99113012b9f747d13") {
+      setDrive(id);
+    }
+    if (acces.category === "650812969113012b9f747d11") {
+      setMb(id);
+    }
+    if (acces.category === "650d7f8b8ba3dc9cbdf9e4aa") {
+      setFan(id);
+    }
   };
+
+  const addAssembling = (e) => {
+    if (tit !== "") {
+      dispatch(
+        createAssembling({
+          cpu: cpu,
+          gpu: gpu,
+          powerblock: block,
+          ram: ram,
+          fan: fan,
+          motherboard: mb,
+          body: corpus,
+          drive: drive,
+          title,
+        })
+      );
+      e.preventDefault;
+    }
+  };
+
 
   return (
     <>
       {" "}
       <CarouselHome />
+      <div className={style.rod_add}>
+        <div className={style.sborka_tit}>
+          {" "}
+          <button onClick={addAssembling} className={style.addBut}>
+            Собрать сборку
+          </button>
+          <p>
+            <span className={style.input}>
+              <input
+                onChange={(e) => setTit(e.target.value)}
+                type="text"
+                placeholder="Введите название сборки"
+              />
+              <span></span>
+            </span>
+          </p>
+        </div>
+      </div>
       <div className={style.rodblock_assem}>
         <div>
           <div className={style.compl}>
@@ -68,7 +138,6 @@ function Assembling() {
                   {" "}
                   <span>{item.title}</span>
                 </div>
-
                 {oneAcces.map((ac) => {
                   if (item._id === ac.category) {
                     return (
@@ -85,7 +154,6 @@ function Assembling() {
             );
           })}
         </div>
-
         {threejs ? (
           <div className={style.testDiv}>
             <Suspense fallback={<div>Loading...</div>}>
@@ -102,6 +170,7 @@ function Assembling() {
         <div className={style.switchThreeJs}>
           <button onClick={handleClickThreeJs}>показать в 3д</button>
         </div>
+        
       </div>
     </>
   );

@@ -34,18 +34,13 @@ function Header() {
           {" "}
           <span>Главная</span>
         </Link>
-        <Link to="sborka">
-          {" "}
-          <span>Компьютеры</span>
-        </Link>
         <Link to="assem">
           {" "}
           <span>Конфигуратор ПК</span>
         </Link>
-        <Link to="assort">
-          {" "}
-          <span>Комплектующие</span>
-        </Link>
+        
+        <Link to="assort"> <span>Комплектующие</span></Link>
+      <Link to="sborki"> <span>Мои сборки</span></Link> 
       </div>
 
       <div className={style.cartIcon}>

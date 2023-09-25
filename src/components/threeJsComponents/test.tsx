@@ -12,7 +12,6 @@ import {
 import { useSelector } from "react-redux";
 
 const Test = ({ modelslink, category }) => {
-  console.log(modelslink);
 
   const defaultModels = [
     "../../../public/corpus.glb",
