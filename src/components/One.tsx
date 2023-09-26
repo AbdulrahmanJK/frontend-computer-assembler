@@ -4,18 +4,30 @@ import OneAcces from './OneAcces';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../app/store';
 import { deleteOneAccessories } from '../features/AccessoriesSlice';
+import { SideBar } from '../components/SideBar'
 
-function One({acces,handleOpenClick,addAssembling,setTit}) {
+
+
+function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}) {
   const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
     const [active, setActive] = React.useState(true)
+
     
+  
+  //   const handleAdd = (item) => {
+  //     setSideCost(sideCost + item.price)
+  //     setSideItems(sideItems + 1)
+  // }
+
 
     const handleButton = () => {
       if (active) {
         handleOpenClick(acces._id, acces)
       } else {
         dispatch(deleteOneAccessories(acces._id))
+        setSideItems(sideItems - 1)
+        setSideCost(sideCost - acces.price)
       }
       setActive(!active)
     }
@@ -44,9 +56,12 @@ function One({acces,handleOpenClick,addAssembling,setTit}) {
           </div>
           <div className={style.button}>
             <button  onClick={()=>handleButton()}>{active ? 'Добавить' : 'Удалить'}</button>
+
           </div>
         </div>
+        
       </div>
+      
     );
 }
 

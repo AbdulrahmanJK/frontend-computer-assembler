@@ -43,6 +43,25 @@
 
 
 }
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 120px;
+    border: 1px solid purple;
+    float: right;
+    color: white;
+    scroll-margin-block: 10px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+  }
+  .sideBar button {
+    background-color: orangered;
+  }
 .two_block{
     padding-left: 10px;
     padding-top: 10px; 

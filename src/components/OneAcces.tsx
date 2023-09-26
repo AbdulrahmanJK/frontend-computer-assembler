@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../app/store";
 import style from '../css/one.module.css'
 
+
 function OneAcces({id, handleOpen}) {
     
+
     const accessories = useSelector((state) => state.accessoriesSlice.accessories)
-    
-    
     const dispatch = useDispatch<AppDispatch>();
-   
+
     
     useEffect(() => {
         fetchOneAccessories(id);
     }, [dispatch]);
-    return(
+
+
+
+    return(     
 
 <div>
 {accessories.map((item)=>{
@@ -38,7 +41,7 @@ function OneAcces({id, handleOpen}) {
                 </div>
                 <div>
                 <div className={style.button}>
-            <button>Добавить</button>
+            <button >Добавить</button>
           </div>
                 </div>
             </div>
