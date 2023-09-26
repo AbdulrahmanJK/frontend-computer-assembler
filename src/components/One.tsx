@@ -4,8 +4,9 @@ import OneAcces from './OneAcces';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../app/store';
 import { deleteOneAccessories } from '../features/AccessoriesSlice';
+import { SideBar } from '../components/SideBar'
 
-function One({acces,handleOpenClick,addAssembling,setTit}) {
+function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}) {
   const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
     const [active, setActive] = React.useState(true)
@@ -16,6 +17,7 @@ function One({acces,handleOpenClick,addAssembling,setTit}) {
         handleOpenClick(acces._id, acces)
       } else {
         dispatch(deleteOneAccessories(acces._id))
+    
       }
       setActive(!active)
     }
