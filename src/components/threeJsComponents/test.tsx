@@ -23,7 +23,6 @@ const Test = () => {
 
 
   const gltf = useLoader(GLTFLoader, "http://localhost:4000/static/airplane_vertex_color_unlit.glb");
-  console.log(gltf);
   
   return (
     <div className="relative  h-full">

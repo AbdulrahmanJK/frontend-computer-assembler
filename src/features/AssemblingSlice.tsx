@@ -80,7 +80,7 @@ async ({cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}:CreateAssemblin
             "http://localhost:4000/assembling",
             {cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}
         )
-        const data = res.data
+        const data = await res.data
         return data
     } catch (error) {
         error

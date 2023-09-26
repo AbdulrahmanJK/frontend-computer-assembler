@@ -75,14 +75,22 @@ function Assembling() {
 
  
  const addAssembling = (e)=>{
-  if(tit!==""){
-    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title}))
+  
+    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title:tit}))
 e.preventDefault
-  }
+  
+setTit('')
+setBlock('')
+setCorpus('')
+setCpu('')
+setDrive('')
+setFan('')
+setGpu('')
+setRam('')
+location.reload()
 
  }
   
-  console.log(tit);
   
   
   return (

@@ -21,7 +21,6 @@ function One({acces,handleOpenClick,addAssembling,setTit}) {
     }
     const handleOpen = () => {
         setOpen(!open)
-        console.log(open);
         
     }
     return (
