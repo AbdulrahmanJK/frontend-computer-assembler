@@ -20,6 +20,7 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
     
       }
       setActive(!active)
+      
     }
     const handleOpen = () => {
         setOpen(!open)
