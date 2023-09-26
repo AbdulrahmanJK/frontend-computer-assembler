@@ -30,6 +30,8 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
+  console.log(category);
+  
   const [mb, setMb] = useState("");
   const [gpu, setGpu] = useState("");
   const [cpu, setCpu] = useState("");
