@@ -10,6 +10,7 @@ export interface User {
 }
 
 export interface CurrentUser {
+  role: string;
   _id: string;
   username: string;
   email: string;
