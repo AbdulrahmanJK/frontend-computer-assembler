@@ -123,12 +123,20 @@
     width: 50%;
 }
 .sborki{
-    width: 200px;
+    width: 300px;
     border: 2px solid #6629FF ;
+    height: 50px;
+    margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
     cursor: pointer;
+    border-radius: 10px;
+    transition: 90ms;
 }
 .sborki:hover{
     background-color: #6629FF;
+    transform: scale(1.1);
 }
 .sborki span{
 color: white;
@@ -136,4 +144,32 @@ color: white;
 .rod_sborki{
 display: flex;
 justify-content: center;
+flex-wrap: wrap;
+width: 60%;
+margin: auto;
+}
+.hdd{
+    z-index: 13;
+    position: relative;
+    width: 285px;
+    bottom: 1100px;
+    left: 433px;
+    cursor: pointer;
+
+}
+.hdd:hover{
+    border: 1px solid #6629FF;
+}
+.ram{
+    z-index: 10;
+    transform: rotate( 90deg);
+    width: 216px;
+    position: relative;
+    bottom: 1409px;
+    left: 211px;
+    cursor: pointer;
+}
+.ram:hover{
+    border: 1px solid #6629FF;
+    
 }

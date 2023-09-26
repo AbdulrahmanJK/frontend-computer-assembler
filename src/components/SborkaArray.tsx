@@ -16,7 +16,7 @@ const assembling = useSelector((state) => state.assemblingSlice.assembling)
     <div className={style.rod_sborki}>
         {assembling.map((item)=>{
             return(
-              <Link to={`sborka/${item._id}`}>  <div className={style.sborki}><span>{item.title}</span></div></Link>
+              <Link to={`sborka/${item._id}`}>  <div className={style.sborki}><div className={style.ssb}><span>{item.title}</span></div></div></Link>
             )
         })}
     </div>
