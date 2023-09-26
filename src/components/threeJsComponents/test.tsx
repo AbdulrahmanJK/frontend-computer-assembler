@@ -14,25 +14,25 @@ import { useSelector } from "react-redux";
 const Test = ({ modelslink, category }) => {
 
   const defaultModels = [
-    "../../../public/corpus.glb",
-    "../../../public/core.glb",
     "../../../public/gpu.glb",
-    "../../../public/cooller.glb",
+    "../../../public/core.glb",
     "../../../public/memmory.glb",
     "../../../public/motherBoard.glb",
     "../../../public/ssd.glb",
     "../../../public/corpus.glb",
     "../../../public/powerBox.glb",
+    "../../../public/cooller.glb",
+
   ];
 
   const models = {
-    [category[0]._id]: useLoader(GLTFLoader, defaultModels[2]),
+    [category[0]._id]: useLoader(GLTFLoader, defaultModels[0]),
     [category[1]._id]: useLoader(GLTFLoader, defaultModels[1]),
-    [category[2]._id]: useLoader(GLTFLoader, defaultModels[0]),
+    [category[2]._id]: useLoader(GLTFLoader, defaultModels[2]),
     [category[3]._id]: useLoader(GLTFLoader, defaultModels[3]),
     [category[4]._id]: useLoader(GLTFLoader, defaultModels[4]),
     [category[5]._id]: useLoader(GLTFLoader, defaultModels[5]),
-    [category[6]._id]: useLoader(GLTFLoader, defaultModels[8]),
+    [category[6]._id]: useLoader(GLTFLoader, defaultModels[6]),
     [category[7]._id]: useLoader(GLTFLoader, defaultModels[7]),
   };
 
