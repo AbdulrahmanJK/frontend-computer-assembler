@@ -12,6 +12,7 @@ export interface AccessoriesState {
    accessories:[],
    error: string | null,
    oneAccessori: []
+
 }
 
 export interface CreateAccessories {

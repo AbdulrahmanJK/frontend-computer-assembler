@@ -43,8 +43,7 @@ function Assembling() {
   const [drive, setDrive] = useState("");
   const [fan, setFan] = useState("");
   const [tit, setTit] = useState("");
-  const [sideCost, setSideCost] = useState(0);
-  const [sideItems, setSideItems] = useState(0);
+  
 
   useEffect(() => {
     dispatch(fetchCategory());
@@ -57,8 +56,7 @@ function Assembling() {
 
   const handleOpenClick = (id, acces) => {
     const inArray = oneAcces.filter((item) => item.category === acces.category);
-    setSideItems(sideItems + 1);
-    setSideCost(sideCost + acces.price);
+    
 
     if (inArray.length < 1) {
       dispatch(fetchOneAccessories(id));
@@ -164,11 +162,6 @@ location.reload()
             );
           })}
           
-        <div className={style.sideBar}>
-        <span>СУММА ТОВАРОВ: {sideCost}₽</span>
-        <span>КОЛ-ВО ТОВАРОВ: {sideItems}</span>
-        <button >В КОРЗИНУ</button>
-        </div>
         </div>
         {threejs ? (
           <div className={style.testDiv}>

@@ -12,7 +12,7 @@ export interface CartItem {
 
 export const initialState ={
   CartItem:[],
-  status: false,
+  status: '',
 };
 
 
@@ -84,19 +84,21 @@ const cartSlice = createSlice({
       state.CartItem = action.payload
     })
     .addCase(createCart.fulfilled,(state,action)=>{
-      
+      state.status = ''
     })
     .addCase(createCart.pending, (state, action) => {
-      state.CartItem = state.CartItem.map((item) => {
-        if (item._id === action.meta.arg){
-          state.status = true
-        }
-        return item
-      })
-      state.error = null;
+      state.status = action.meta.arg.accessories
+      // state.CartItem = state.CartItem.map((item) => {
+      //   if (item._id === action.meta.arg.accessories){
+      //     state.status = true
+      //   }
+      //   return item
+      // })
+      // state.error = null;
     })
     .addCase(removeAllCartItem.fulfilled,(state,action)=>{
-      state.CartItem = action.payload
+      // state.CartItem = action.payload
+      state.CartItem = []
     })
     .addCase(removeCartItem.fulfilled,(state,action)=>{
       state.CartItem = state.CartItem.filter((item)=> item._id !== action.payload._id)
