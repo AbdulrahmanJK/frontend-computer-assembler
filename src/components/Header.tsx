@@ -46,7 +46,7 @@ function Header() {
       </div>
 
       <div className={style.cartIcon}>
-        <div onClick={toggleCart}>
+        <div className={style.cart_log} onClick={toggleCart}>
           <button
             className={style.cart}
             onClick={() => {
