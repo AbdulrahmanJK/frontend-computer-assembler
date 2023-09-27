@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 
 const Test = ({ modelslink, category }) => {
+console.log(modelslink);
 
   const defaultModels = [
     "../../../public/gpu.glb",
@@ -37,15 +38,16 @@ const Test = ({ modelslink, category }) => {
   };
 
   if (modelslink) {
-    modelslink.forEach((item) => {
-      models[item.category] =
-        useLoader(
+    modelslink?.forEach((item) => {
+      if (item.linkModel) { // Проверка, что item.linkModel не undefined
+        models[item.category] = useLoader(
           GLTFLoader,
           `http://localhost:4000/static/${item.linkModel}`
         ) || null;
+      }
+      return null
     });
   }
-
   return (
     <div className="relative h-full">
       <Canvas>

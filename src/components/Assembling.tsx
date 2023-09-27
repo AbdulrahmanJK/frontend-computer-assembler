@@ -32,6 +32,7 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
+
   console.log(category);
   
   const [mb, setMb] = useState("");
@@ -171,8 +172,13 @@ location.reload()
           </div>
         ) : (
           <div className={style.twoRod}>
+
             {accessories?.map((acces) => (
-              <One  handleOpenClick={handleOpenClick} acces={acces} />
+
+              <One  handleOpenClick={handleOpenClick} acces={acces} 
+              
+              />
+              
             ))}
           </div>
         )}
