@@ -4,12 +4,15 @@
     background-color: white;
 }
 .partners {
+    width: auto;
     display: flex;
     flex-direction: column;
     color: black;
     font-size: 32px;
     font-family: oswald;
     padding: 20px;
+    text-align: left;
+    padding-left: 100px;
 }
 .partners h1 {
     font-weight: 400;
@@ -57,6 +60,7 @@
     bottom: 0;
     position: absolute;
     right: 42%;
+    border-radius: 50%;
 }
 .gigabyte {
     position: absolute;
@@ -81,4 +85,33 @@
     position: absolute;
     bottom: 20%;
     right: 200px;
+}
+.carouselDiv {
+    width: auto;
+    height: 700px;
+    justify-content: center;
+    margin: auto;
+}
+.projectsText {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-size: 32px;
+    font-family: oswald;
+    padding: 20px;
+    text-align: left;
+    padding-left: 100px;
+}
+.projectsText h1 {
+    font-weight: 400;
+    margin-right: 900px;
+
+}
+.projectsText h3 {
+    font-weight: 100;
+    margin-right: 850px;
+    flex-wrap: nowrap;
+    width: 100%;
+
 }

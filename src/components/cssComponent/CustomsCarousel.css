@@ -1,0 +1,82 @@
+.rodCarusel{
+    width: 100%;
+    height: 700px;
+}
+.carusel img{
+    width: 100%;
+   aspect-ratio: 4/1;
+   object-fit: cover;
+    
+}
+
+/* Настройки маркированного списка */
+.hoverEffectScale {
+    list-style:none;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+
+}
+.hoverEffectScale li {
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    margin: 0;
+    box-shadow: 1px 3px 1px 0 rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+/* Заголовок, текст и ссылка */
+.hoverEffectScale li h3{
+    color: #fff;
+    margin: 5px;
+}
+.hoverEffectScale li p{
+    color: #fff;
+    margin: 5px;
+}
+.hoverEffectScale li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    color: #fff;
+    background: #000;
+    border-radius: 5px;
+    margin: 0 auto;
+    transition: all 0.4s ease-in-out;
+}
+.hoverEffectScale li a:hover {
+    background: #454545;
+    color: #fff;
+}
+/* Выезжающий блок с текстом */ 
+.hoverEffectScale li > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.hoverEffectScale li:hover > div {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.hoverEffectScale li div {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.35); /* Фон блока при наведении */
+    transition: all 0.4s ease-in-out;
+    color: #fff;
+}
+.hoverEffectScale li img {
+    transition: all 0.2s linear;
+}
+.hoverEffectScale li:hover img {
+    transform: scale(1.3);
+}
+.hoverEffectScale li:hover div {
+    opacity: 1;
+}
+     

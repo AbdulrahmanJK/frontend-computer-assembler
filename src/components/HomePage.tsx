@@ -10,6 +10,8 @@ import rog from '../components/img/partnersSVGs/ROG.png'
 import hyperx from '../components/img/partnersSVGs/hyperX.png'
 import cyberSensorica from '../components/img/partnersSVGs/cyberSensorica.png'
 import nvidia from '../components/img/partnersSVGs/nvidia.png'
+import { CarouselCustom } from "./cssComponent/customsCarousel";
+import  Footer  from './Footer'
 
 
 function HomePage() {
@@ -34,8 +36,14 @@ function HomePage() {
           <img className={style.intel} src={intel} alt="intel" />
           <img className={style.nvidia} src={nvidia} alt="nvidia" />
         </div>
-        <div>text</div>
-        <div>our customs</div>
+        <div className={style.projectsText}>
+          <h1>Эксклюзивные проекты</h1>
+          <h3>Уникальные компьютеры, собранные для наших клиентов и друзей</h3>
+        </div>
+        <div className={style.carouselDiv}><CarouselCustom/></div>
+      </div>
+      <div>
+        < Footer/> 
       </div>
 
 
