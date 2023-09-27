@@ -10,14 +10,20 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
   const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
     const [active, setActive] = React.useState(true)
+
     
+  
+  //   const handleAdd = (item) => {
+  //     setSideCost(sideCost + item.price)
+  //     setSideItems(sideItems + 1)
+  // }
+
 
     const handleButton = () => {
       if (active) {
         handleOpenClick(acces._id, acces)
       } else {
         dispatch(deleteOneAccessories(acces._id))
-    
       }
       setActive(!active)
       
@@ -46,9 +52,12 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
           </div>
           <div className={style.button}>
             <button  onClick={()=>handleButton()}>{active ? 'Добавить' : 'Удалить'}</button>
+
           </div>
         </div>
+        
       </div>
+      
     );
 }
 
