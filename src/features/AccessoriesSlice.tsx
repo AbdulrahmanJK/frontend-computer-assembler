@@ -24,7 +24,8 @@ export interface CreateAccessories {
 const initialState : AccessoriesState ={
     accessories:[],
     oneAccessori: [],
-    error:null
+    error: null,
+    loading: false
 }
 
 
@@ -92,15 +93,11 @@ const accessoriesSlice = createSlice({
             state.accessories = action.payload
         })
         .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
-            // console.log(action.payload);
             
             state.oneAccessori.unshift(action.payload)
-            console.log(action.payload,);
             
         })
         .addCase(deleteOneAccessories.fulfilled,(state, action)=>{
-            // console.log(action.payload);
-            // console.log(state.oneAccessori);
             
             state.oneAccessori = state.oneAccessori.filter((item) => item._id !== action.payload._id)
         })

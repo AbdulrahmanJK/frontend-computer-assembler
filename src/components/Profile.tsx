@@ -25,7 +25,6 @@ const Profile = () => {
   useEffect(() => {
     if (token) {
       dispatch(fetchUserData(token)).then(() => {
-        console.log(user?.username);
       });
     }
   }, [dispatch, token]);

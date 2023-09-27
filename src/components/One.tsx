@@ -6,8 +6,6 @@ import { AppDispatch } from '../app/store';
 import { deleteOneAccessories } from '../features/AccessoriesSlice';
 import { SideBar } from '../components/SideBar'
 
-
-
 function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}) {
   const dispatch = useDispatch<AppDispatch>()
     const [open, setOpen] = React.useState(false)
@@ -26,14 +24,12 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
         handleOpenClick(acces._id, acces)
       } else {
         dispatch(deleteOneAccessories(acces._id))
-        setSideItems(sideItems - 1)
-        setSideCost(sideCost - acces.price)
       }
       setActive(!active)
+      
     }
     const handleOpen = () => {
         setOpen(!open)
-        console.log(open);
         
     }
     return (

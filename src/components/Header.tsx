@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import Cart from "./Cart";
@@ -7,14 +7,14 @@ import img1 from "./img/logo.jpg";
 import img2 from "./img/user.svg";
 import cart2 from "./img/cart2.png";
 import style from "./Header/header.module.css";
-import { RootState } from "../app/store";
+import { AppDispatch, RootState } from "../app/store";
+import { fetchCart } from "../features/CartSlice";
 function Header() {
   const getTok = useSelector((state: RootState) => state.authReducer.token);
   const [isCartVisible, setCartVisible] = useState(false);
-  const cartItemsCount = useSelector(
-    (state: RootState) => state.CartSlice.items.length
-  );
-  console.log(cartItemsCount);
+  const dispatch = useDispatch<AppDispatch>()
+ 
+ 
 
   const toggleCart = () => {
     setCartVisible(!isCartVisible);
@@ -22,6 +22,8 @@ function Header() {
 
   useEffect(() => {
     getTok;
+    dispatch(fetchCart())
+    
   }, [getTok]);
   return (
     <div className={style.header}>

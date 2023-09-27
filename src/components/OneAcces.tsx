@@ -21,7 +21,7 @@ function OneAcces({id, handleOpen}) {
     return(     
 
 <div>
-{accessories.map((item)=>{
+{accessories?.map((item)=>{
     if(item._id === id){
         return(
             <div className={style.oneProd}>

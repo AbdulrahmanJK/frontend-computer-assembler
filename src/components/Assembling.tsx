@@ -32,6 +32,8 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
+  console.log(category);
+  
   const [mb, setMb] = useState("");
   const [gpu, setGpu] = useState("");
   const [cpu, setCpu] = useState("");
@@ -41,6 +43,8 @@ function Assembling() {
   const [drive, setDrive] = useState("");
   const [fan, setFan] = useState("");
   const [tit, setTit] = useState("");
+  const [sideCost, setSideCost] = useState(0);
+  const [sideItems, setSideItems] = useState(0);
 
   useEffect(() => {
     dispatch(fetchCategory());
@@ -53,6 +57,8 @@ function Assembling() {
 
   const handleOpenClick = (id, acces) => {
     const inArray = oneAcces.filter((item) => item.category === acces.category);
+    setSideItems(sideItems + 1);
+    setSideCost(sideCost + acces.price);
 
     if (inArray.length < 1) {
       dispatch(fetchOneAccessories(id));
@@ -83,26 +89,28 @@ function Assembling() {
     }
   };
 
-  const addAssembling = (e) => {
-    if (tit !== "") {
-      dispatch(
-        createAssembling({
-          cpu: cpu,
-          gpu: gpu,
-          powerblock: block,
-          ram: ram,
-          fan: fan,
-          motherboard: mb,
-          body: corpus,
-          drive: drive,
-          title,
-        })
-      );
-      e.preventDefault;
-    }
-  };
 
 
+ 
+ const addAssembling = (e)=>{
+  
+    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title:tit}))
+e.preventDefault
+  
+setTit('')
+setBlock('')
+setCorpus('')
+setCpu('')
+setDrive('')
+setFan('')
+setGpu('')
+setRam('')
+location.reload()
+
+ }
+  
+  
+  
   return (
     <>
       {" "}
@@ -155,6 +163,12 @@ function Assembling() {
               </div>
             );
           })}
+          
+        <div className={style.sideBar}>
+        <span>СУММА ТОВАРОВ: {sideCost}₽</span>
+        <span>КОЛ-ВО ТОВАРОВ: {sideItems}</span>
+        <button >В КОРЗИНУ</button>
+        </div>
         </div>
         {threejs ? (
           <div className={style.testDiv}>
@@ -165,14 +179,14 @@ function Assembling() {
         ) : (
           <div className={style.twoRod}>
             {accessories?.map((acces) => (
-              <One handleOpenClick={handleOpenClick} acces={acces} />
+              <One  handleOpenClick={handleOpenClick} acces={acces} />
             ))}
           </div>
         )}
         <div className={style.switchThreeJs}>
           <button onClick={handleClickThreeJs}>показать в 3д</button>
         </div>
-        
+
       </div>
     </>
   );
