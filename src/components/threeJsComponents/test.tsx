@@ -27,14 +27,8 @@ console.log(modelslink);
   ];
 
   const models = {
-    [category[0]._id]: useLoader(GLTFLoader, defaultModels[0]),
-    [category[1]._id]: useLoader(GLTFLoader, defaultModels[1]),
-    [category[2]._id]: useLoader(GLTFLoader, defaultModels[2]),
-    [category[3]._id]: useLoader(GLTFLoader, defaultModels[3]),
-    [category[4]._id]: useLoader(GLTFLoader, defaultModels[4]),
     [category[5]._id]: useLoader(GLTFLoader, defaultModels[5]),
-    [category[6]._id]: useLoader(GLTFLoader, defaultModels[6]),
-    [category[7]._id]: useLoader(GLTFLoader, defaultModels[7]),
+   
   };
 
   if (modelslink) {
