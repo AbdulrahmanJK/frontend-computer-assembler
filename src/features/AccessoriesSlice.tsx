@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export interface Accessories {
-    image: string,
-    title: string,
-    price:number,
-    attributes: string,
-    category: string
+    image: string;
+    title: string;
+    price: number;
+    attributes: string;
+    category: string;
 }
 export interface AccessoriesState {
    accessories:[],
@@ -16,11 +16,11 @@ export interface AccessoriesState {
 }
 
 export interface CreateAccessories {
-    image: string,
-    title: string,
-    price:number,
-    attributes: string,
-    category: string
+    image: string;
+    title: string;
+    price: number;
+    attributes: string;
+    category: string;
 }
 const initialState : AccessoriesState ={
     accessories:[],
@@ -29,45 +29,42 @@ const initialState : AccessoriesState ={
     loading: false
 }
 
-
 export const fetchAccessories = createAsyncThunk(
     "accessories/fetch",
-    async(_)=>{
+    async (_) => {
         try {
-           const res = await axios.get("http://localhost:4000/accessories") 
-           const data = res.data
-           return data
+            const res = await axios.get("http://localhost:4000/accessories")
+            const data = res.data
+            return data
         } catch (error) {
-            error
+            throw error; // Обработка ошибки
         }
     }
 )
 
 export const fetchAccessoriesCategory = createAsyncThunk(
     "accessories/category",
-    async (id) =>{
+    async (id) => {
         try {
             const res = await axios.get(`http://localhost:4000/accessories/${id}`)
             const accessories = res.data
             return accessories
         } catch (error) {
-            error
+            throw error; // Обработка ошибки
         }
     }
 )
 
-
-
-export const fetchOneAccessories = createAsyncThunk("fetch/one",
-async (id)=>{
-    try {
-        const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
-        const accessories = res.data
-        return accessories
-    } catch (error) {
-        error
+export const fetchOneAccessories = createAsyncThunk("accessories/fetchOne",
+    async (id) => {
+        try {
+            const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
+            const accessories = res.data
+            return accessories
+        } catch (error) {
+            throw error; // Обработка ошибки
+        }
     }
-}
 )
 export const deleteOneAccessories = createAsyncThunk("delete/one",
 async (id)=>{
@@ -81,11 +78,36 @@ async (id)=>{
 }
 )
 
+export const createAccessories = createAsyncThunk(
+    "accessories/createAccessories",
+    async (accessory: CreateAccessories) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/accessories",
+                accessory
+            );
+
+            if (response.status !== 200) {
+                throw new Error("Server error");
+            }
+
+            const data = response.data;
+            return data;
+        } catch (error) {
+            if (error instanceof Error) {
+                throw error;
+            } else {
+                throw new Error("Unexpected error");
+            }
+        }
+    }
+);
+
 const accessoriesSlice = createSlice({
-    name:"accessories",
+    name: "accessories",
     initialState,
-    reducers:{},
-    extraReducers: (builder)=>{
+    reducers: {},
+    extraReducers: (builder) => {
         builder
         .addCase(fetchAccessories.fulfilled,(state,action)=>{
             state.accessories = action.payload
@@ -104,4 +126,6 @@ const accessoriesSlice = createSlice({
         })
     },
 });
-export default accessoriesSlice.reducer
+
+export default accessoriesSlice.reducer;
+

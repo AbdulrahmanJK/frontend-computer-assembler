@@ -1,8 +1,8 @@
-// Register.tsx
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { registr } from "../../features/AuthSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 interface RegistrationForm {
   email: string;
@@ -15,16 +15,20 @@ const Register: React.FC = () => {
     password: "",
   });
 
-  const [registrationSuccess, setRegistrationSuccess] = useState(false); // Состояние для отслеживания успешной регистрации
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
-  const { status, error } = useSelector((state: RootState) => state.authReducer);
+  const { status, error } = useSelector(
+    (state: RootState) => state.authReducer
+  );
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(registr(formData))
       .then(() => {
-        setRegistrationSuccess(true); // Устанавливаем состояние успешной регистрации в true
+        setRegistrationSuccess(true);
       })
       .catch((error) => {
         console.error("Registration failed:", error);
@@ -34,13 +38,13 @@ const Register: React.FC = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-96 p-8 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Register</h2>
+        <h2 className="text-2xl font-semibold mb-4">Регистрация</h2>
         {status === "loading" && (
           <div className="mb-4">
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
           </div>
         )}
-        {registrationSuccess && ( // Показываем сообщение при успешной регистрации
+        {registrationSuccess && (
           <p className="text-green-500 mb-4">Вы успешно зарегистрировались!</p>
         )}
         {status === "failed" && <p className="text-red-500 mb-4">{error}</p>}
@@ -71,9 +75,11 @@ const Register: React.FC = () => {
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
           >
-            Register
+            Регистрация
           </button>
         </form>
+        <p>Если уже зарегистрированы: </p>
+        <Link to="/auth">Войти</Link>
       </div>
     </div>
   );
