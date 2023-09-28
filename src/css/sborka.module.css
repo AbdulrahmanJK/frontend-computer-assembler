@@ -173,3 +173,30 @@ margin: auto;
     border: 1px solid #6629FF;
     
 }
+.price{
+    font-size: 25px;
+    color: white;
+}
+.addCart{
+    margin-top: 12px;
+    border: 1px solid #6629ff;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 7px;
+  }
+  .addCart:hover {
+    background: linear-gradient(to bottom right, #242238, #6629ff);
+  }
+  .dell{
+display: flex;
+align-items: center;
+ 
+  }
+ 
+  .del_but img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
+  }
+  
