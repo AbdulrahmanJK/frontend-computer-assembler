@@ -42,6 +42,7 @@ function One({ acces, handleOpenClick, setPrice, price }) {
           {acces.linkModel ? <div className='text-'>3D</div>:null}
 
           {open ? <OneAcces handleOpen={handleOpen} id={acces._id} /> : null}
+          
         </div>
 
         <div className={style.price}>
