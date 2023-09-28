@@ -1,8 +1,6 @@
 .rodCarusel{
     width: 100%;
-    z-index:0;
-
-    
+    height: 700px;
 }
 .carusel img{
     width: 100%;

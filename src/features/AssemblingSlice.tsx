@@ -28,7 +28,9 @@ export interface CreateAssembling {
     body: string,
     fan:string,
     motherboard:string,
-    title: string
+    title: string,
+    price:number
+
 }
 const initialState : AssemblingState ={
     assembling:[],
@@ -62,10 +64,10 @@ async (id)=>{
     }
 }
 )
-export const deleteOneAssembling = createAsyncThunk("delete/one",
+export const deleteOneAssembling = createAsyncThunk("delete/Assemblone",
 async (id)=>{
     try {
-        const res = await axios.get(`http://localhost:4000/assembling/${id}`)
+        const res = await axios.delete(`http://localhost:4000/assembling/${id}`)
         const assembling = res.data
         return assembling
     } catch (error) {
@@ -74,13 +76,13 @@ async (id)=>{
 }
 )
 export const createAssembling = createAsyncThunk("add/assembl",
-async ({cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}:CreateAssembling)=>{
+async ({cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive,price}:CreateAssembling)=>{
     try {
         const res = await axios.post(
             "http://localhost:4000/assembling",
-            {cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive}
+            {cpu,gpu,powerblock,ram,fan,motherboard,body,title,drive,price}
         )
-        const data = res.data
+        const data = await res.data
         return data
     } catch (error) {
         error
@@ -103,7 +105,9 @@ const assemblingSlice = createSlice({
             
             state.assembling = action.payload
         })
-      
+        .addCase(deleteOneAssembling.fulfilled,(state,action)=>{
+            state.assembling = state.assembling.filter((item) => item._id !== action.payload._id)
+        })
     },
 });
 export default assemblingSlice.reducer
