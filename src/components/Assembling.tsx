@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { fetchCategory } from "../features/CategorySlice";
 import { CarouselHome } from "./cssComponent/Carousel";
 import { Suspense } from "react";
-
 import style from "../css/assembling.module.css";
 import {
   fetchAccessories,
@@ -12,11 +11,8 @@ import {
 } from "../features/AccessoriesSlice";
 import { AppDispatch } from "../app/store";
 import Test from "../components/threeJsComponents/test";
-
 import One from "./One";
 import { createAssembling } from "../features/AssemblingSlice";
-
-
 
 function Assembling() {
   const handleClickThreeJs = () => {
@@ -32,8 +28,8 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
-  
-  
+  const [accessoriesActive, setAccessoriesActive] = useState({});
+
   const [mb, setMb] = useState("");
   const [gpu, setGpu] = useState("");
   const [cpu, setCpu] = useState("");
@@ -43,11 +39,8 @@ function Assembling() {
   const [drive, setDrive] = useState("");
   const [fan, setFan] = useState("");
   const [tit, setTit] = useState("");
-  const [price,setPrice] = useState(0)
-   
-  
-   
-   
+  const [price, setPrice] = useState(0);
+
   useEffect(() => {
     dispatch(fetchCategory());
     dispatch(fetchAccessories());
@@ -59,8 +52,7 @@ function Assembling() {
 
   const handleOpenClick = (id, acces) => {
     const inArray = oneAcces.filter((item) => item.category === acces.category);
-    setPrice(acces.price + price)
-    
+    setPrice(acces.price + price);
 
     if (inArray.length < 1) {
       dispatch(fetchOneAccessories(id));
@@ -90,32 +82,39 @@ function Assembling() {
       setFan(id);
     }
   };
-  
-  
+
   // const a = oneAcces.reduce((acc, num)=>{
   //   return acc + num.item.price
   // },0)
   // console.log(a);
 
- 
- const addAssembling = ()=>{
-  
-    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title:tit,price:price}))
-  
-setTit('')
-setBlock('')
-setCorpus('')
-setCpu('')
-setDrive('')
-setFan('')
-setGpu('')
-setRam('')
-location.reload()
+  const addAssembling = () => {
+    dispatch(
+      createAssembling({
+        cpu: cpu,
+        gpu: gpu,
+        powerblock: block,
+        ram: ram,
+        fan: fan,
+        motherboard: mb,
+        body: corpus,
+        drive: drive,
+        title: tit,
+        price: price,
+      })
+    );
 
- }
-  
-  
-  
+    setTit("");
+    setBlock("");
+    setCorpus("");
+    setCpu("");
+    setDrive("");
+    setFan("");
+    setGpu("");
+    setRam("");
+    location.reload();
+  };
+
   return (
     <>
       {" "}
@@ -168,7 +167,6 @@ location.reload()
               </div>
             );
           })}
-          
         </div>
         {threejs ? (
           <div className={style.testDiv}>
@@ -178,16 +176,27 @@ location.reload()
           </div>
         ) : (
           <div className={style.twoRod}>
-
             {accessories?.map((acces) => (
-              <One  handleOpenClick={handleOpenClick} acces={acces} setPrice={setPrice} price={price} />
+              <One
+                key={acces._id} // Добавьте ключ для элементов списка
+                handleOpenClick={handleOpenClick}
+                acces={acces}
+                setPrice={setPrice}
+                price={price}
+                active={accessoriesActive[acces._id] || false}
+                setActive={(value) => {
+                  setAccessoriesActive((prevState) => ({
+                    ...prevState,
+                    [acces._id]: value,
+                  }));
+                }}
+              />
             ))}
           </div>
         )}
         <div className={style.switchThreeJs}>
           <button onClick={handleClickThreeJs}>показать в 3д</button>
         </div>
-
       </div>
     </>
   );

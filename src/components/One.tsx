@@ -6,13 +6,13 @@ import { AppDispatch } from "../app/store";
 import { deleteOneAccessories } from "../features/AccessoriesSlice";
 import { SideBar } from "../components/SideBar";
 
-function One({ acces, handleOpenClick, setPrice, price }) {
+function One({ acces, handleOpenClick, setPrice, price, active, setActive }) {
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = React.useState(false);
-  const [active, setActive] = React.useState(true);
+  // Переименовываем состояние active в isActive
 
   const handleButton = () => {
-    if (active) {
+    if (!active) {
       handleOpenClick(acces._id, acces);
     } else {
       dispatch(deleteOneAccessories(acces._id));
@@ -20,11 +20,12 @@ function One({ acces, handleOpenClick, setPrice, price }) {
     }
     setActive(!active);
   };
+
   const handleOpen = () => {
     setOpen(!open);
   };
-  console.log(active);
-  
+  console.log(active); // Изменяем на isActive
+
   return (
     <div>
       <div className={style.two_block}>
@@ -37,12 +38,10 @@ function One({ acces, handleOpenClick, setPrice, price }) {
           </span>
           <span onClick={handleOpen} className={style.oneSpan}>
             Подробнее
-            
           </span>
-          {acces.linkModel ? <div className='text-'>3D</div>:null}
+          {acces.linkModel ? <div className="text-">3D</div> : null}
 
           {open ? <OneAcces handleOpen={handleOpen} id={acces._id} /> : null}
-          
         </div>
 
         <div className={style.price}>
@@ -50,10 +49,9 @@ function One({ acces, handleOpenClick, setPrice, price }) {
         </div>
         <div className={style.button}>
           <button onClick={() => handleButton()}>
-            {active ? "Добавить" : "Удалить"}
+            {!active ? "Добавить" : "Удалить"}
           </button>
         </div>
-        
       </div>
     </div>
   );
