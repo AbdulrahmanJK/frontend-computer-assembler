@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchCategory } from "../features/CategorySlice";
 import { CarouselHome } from "./cssComponent/Carousel";
 import { Suspense } from "react";
+import img from './img/3D.svg'
 
 import style from "../css/assembling.module.css";
 import {
@@ -120,6 +121,7 @@ location.reload()
     <>
       {" "}
       <CarouselHome />
+      <div className={style.rrr}>
       <div className={style.rod_add}>
         <div className={style.sborka_tit}>
           {" "}
@@ -141,7 +143,7 @@ location.reload()
       <div className={style.rodblock_assem}>
         <div>
           <div className={style.compl}>
-            <span>Комплектация</span>
+            
           </div>
           {category?.map((item) => {
             return (
@@ -185,9 +187,11 @@ location.reload()
           </div>
         )}
         <div className={style.switchThreeJs}>
-          <button onClick={handleClickThreeJs}>показать в 3д</button>
+          
+          <button onClick={handleClickThreeJs}><img src={img} alt="" /></button>
         </div>
 
+      </div>
       </div>
     </>
   );
