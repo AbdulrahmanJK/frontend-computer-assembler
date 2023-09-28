@@ -13,10 +13,7 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
 
     
   
-  //   const handleAdd = (item) => {
-  //     setSideCost(sideCost + item.price)
-  //     setSideItems(sideItems + 1)
-  // }
+  
 
 
     const handleButton = () => {
@@ -43,7 +40,10 @@ function One({acces,handleOpenClick,setSideItems,sideItems,setSideCost,sideCost}
             <span onClick={handleOpen} className={style.tit_span}>{acces.title}</span>
             <span  onClick={handleOpen} className={style.oneSpan}>
               Подробнее
+              
             </span>
+          {acces.linkModel ? <div className='text-'>3D</div>:null}
+
             {open ? <OneAcces  handleOpen={handleOpen} id={acces._id} /> : null}
           </div>
   
