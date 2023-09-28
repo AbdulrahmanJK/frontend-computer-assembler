@@ -3,13 +3,10 @@ import { fetchOneAccessories } from "../features/AccessoriesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../app/store";
 import style from "../css/one.module.css";
-import style from '../css/one.module.css'
-
 
 function OneAcces({ id, handleOpen }) {
-  const accessories = useSelector(
-    (state) => state.accessoriesSlice.accessories
-  );
+
+  const accessories = useSelector((state) => state.accessoriesSlice.accessories);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -21,25 +18,6 @@ function OneAcces({ id, handleOpen }) {
       {accessories?.map((item) => {
         if (item._id === id) {
           return (
-function OneAcces({id, handleOpen}) {
-    
-
-    const accessories = useSelector((state) => state.accessoriesSlice.accessories)
-    const dispatch = useDispatch<AppDispatch>();
-
-    
-    useEffect(() => {
-        fetchOneAccessories(id);
-    }, [dispatch]);
-
-
-
-    return(     
-
-<div>
-{accessories?.map((item)=>{
-    if(item._id === id){
-        return(
             <div className={style.oneProd}>
               <div className={style.but}>
                 <button onClick={handleOpen}>✕</button>
