@@ -32,8 +32,7 @@ function Assembling() {
   const modelslink = useSelector(
     (state) => state.accessoriesSlice.oneAccessori
   );
-
-  console.log(category);
+  
   
   const [mb, setMb] = useState("");
   const [gpu, setGpu] = useState("");
@@ -44,8 +43,11 @@ function Assembling() {
   const [drive, setDrive] = useState("");
   const [fan, setFan] = useState("");
   const [tit, setTit] = useState("");
+  const [price,setPrice] = useState(0)
+   
   
-
+   
+   
   useEffect(() => {
     dispatch(fetchCategory());
     dispatch(fetchAccessories());
@@ -57,6 +59,7 @@ function Assembling() {
 
   const handleOpenClick = (id, acces) => {
     const inArray = oneAcces.filter((item) => item.category === acces.category);
+    setPrice(acces.price + price)
     
 
     if (inArray.length < 1) {
@@ -87,14 +90,17 @@ function Assembling() {
       setFan(id);
     }
   };
-
-
+  
+  
+  // const a = oneAcces.reduce((acc, num)=>{
+  //   return acc + num.item.price
+  // },0)
+  // console.log(a);
 
  
- const addAssembling = (e)=>{
+ const addAssembling = ()=>{
   
-    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title:tit}))
-e.preventDefault
+    dispatch(createAssembling({cpu:cpu,gpu:gpu,powerblock:block,ram:ram,fan:fan,motherboard:mb,body:corpus,drive:drive,title:tit,price:price}))
   
 setTit('')
 setBlock('')
@@ -174,11 +180,7 @@ location.reload()
           <div className={style.twoRod}>
 
             {accessories?.map((acces) => (
-
-              <One  handleOpenClick={handleOpenClick} acces={acces} 
-              
-              />
-              
+              <One  handleOpenClick={handleOpenClick} acces={acces} setPrice={setPrice} price={price} />
             ))}
           </div>
         )}
