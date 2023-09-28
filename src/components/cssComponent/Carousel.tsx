@@ -59,9 +59,6 @@ export function CarouselHome() {
               alt="First slide"
             />
     <div>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-      <a href="">Подробнее</a>
     </div>
   </li>
 </ul>
@@ -75,9 +72,7 @@ export function CarouselHome() {
               alt="First slide"
             />
     <div>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-      <a href="">Подробнее</a>
+
     </div>
   </li>
 </ul>
@@ -91,9 +86,7 @@ export function CarouselHome() {
               alt="First slide"
             />
     <div>
-      <h3>Заголовок</h3>
-      <p>Текст</p>
-      <a href="">Подробнее</a>
+
     </div>
   </li>
 </ul>

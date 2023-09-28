@@ -12,6 +12,7 @@
     /* font-family: 'Rubik Mono One', sans-serif; */
     font-family: 'Playfair Display', serif;
     font-size: 15px;
+    border-radius: 2px;
 
 
     flex-wrap: wrap;
@@ -33,6 +34,8 @@
     display: flex;
     justify-content: center;
     width: auto;
+    /* background: radial-gradient(circle, rgba(62,70,106,1) 0%, rgba(49,18,77,1) 35%, rgba(10,27,46,1) 100%); */
+
    
 }
 .two_block img{
@@ -43,25 +46,8 @@
 
 
 }
-.sideBar {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 300px;
-    height: 120px;
-    border: 1px solid purple;
-    float: right;
-    color: white;
-    scroll-margin-block: 10px;
-    position: fixed;
-    right: 50px;
-    bottom: 50px;
-  }
-  .sideBar button {
-    background-color: orangered;
-  }
+
+  
 .two_block{
     padding-left: 10px;
     padding-top: 10px; 
@@ -75,6 +61,7 @@
     padding: 20px;
     margin-left: 7%;
     font-family: 'Space Grotesk', sans-serif;
+    border-radius: 2px;
 
 }
 .twoRod{
@@ -133,12 +120,15 @@ height: 44px;
     margin-top: 90px;
    max-height: 800px;
    width: 800px;
+   background: url("https://www.youtube.com/watch?v=0E44DClsX5Q");
 }
 .switchThreeJs{
-    width: auto;
-    display: block;
+    width: 50px;
+    display: flex;
     margin: auto;
     margin-top: 90px;
+    color: white;
+  
 }
 .switchThreeJs button{
     color: white;
@@ -189,3 +179,24 @@ display: flex;
 
 
 
+
+.switchThreeJs{
+    border: 2px solid #6629FF;
+    padding: 7px;
+    width: 50px;
+margin: 0;
+    height: 50px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.switchThreeJs:hover{
+    background: linear-gradient(to bottom right,#242238, #6629FF)
+}
+.rrr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(64,24,101,1) 43%, rgba(0,0,0,1) 100%);
+
+
+}
