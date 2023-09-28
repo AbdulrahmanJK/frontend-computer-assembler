@@ -4,7 +4,7 @@ function HomePage() {
   return (
     <div>
       <CarouselHome/>
-      <div></div>
+     
     </div>
   );
 }

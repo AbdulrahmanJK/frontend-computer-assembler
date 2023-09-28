@@ -46,6 +46,7 @@ const Login: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
+            required
               type="email"
               placeholder="Email"
               className="w-full p-2 border rounded"
@@ -57,6 +58,7 @@ const Login: React.FC = () => {
           </div>
           <div className="mb-4">
             <input
+            required
               type="password"
               placeholder="Password"
               className="w-full p-2 border rounded"

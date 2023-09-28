@@ -1,45 +1,58 @@
-.rod_block{
-    display: flex;
-    flex-wrap: wrap;
-    width:80%;
-    
+.rod_block {
+  display: flex;
+  flex-wrap: wrap;
 }
 .image img {
-    width: 150px;
-    height: 150px;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
-.title{
-    font-family: 'Cormorant Garamond', serif;
-    font-family: 'Roboto Slab', serif;
-    color: white;
-   
+.title {
+  font-family: "Cormorant Garamond", serif;
+  font-family: "Roboto Slab", serif;
+  color: white;
 }
-.keys{
-width: 350px;
-    background: #242630;
-    align-items: center;
-    margin: 0 20px;
-    margin-top: 20px;
-    color: white;
-    cursor: pointer;
-    padding: 20px;
+.keys {
+    border-radius: 8px;
+  transition: 1s;
+  width: 350px;
+  background: #242630;
+  align-items: center;
+  margin: 0 20px;
+  margin-top: 20px;
+ 
+  color: white;
+  cursor: pointer;
+  padding: 20px;
 }
-.keys button{
-    margin-top: 12px;
-    border: 1px solid #6629FF;
-    color: white;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 7px;
-}
-.keys button:hover{
-    background: linear-gradient(to bottom right,#242238, #6629FF)
 
+.keys button {
+  margin-top: 12px;
+  border: 1px solid #6629ff;
+  color: white;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 7px;
 }
-.rod_rod{
+.keys button:hover {
+  background: linear-gradient(to bottom right, #242238, #6629ff);
+}
+.rod_rod {
+  display: flex;
+  justify-content: center;
+}
+.keys:hover {
+  transform: scale(1.1);
+  background: linear-gradient(to bottom right, #08042d, #66509f);
+}
+.title {
+  margin-top: 10px;
+}
+.price {
+  color: #6629ff;
+  font-size: 20px;
+}
+.image{
     display: flex;
     justify-content: center;
-}
-.keys:hover{
-    background: linear-gradient(to bottom right,#08042d, #66509f)
 }

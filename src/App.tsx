@@ -11,6 +11,8 @@ import Assembling from "./components/Assembling";
 import { CarouselHome } from "./components/cssComponent/Carousel";
 import Assortiment from "./components/Assortiment";
 import OneCategory from "./components/OneCategory";
+import Sborka from "./components/Sborka";
+import SborkaArray from "./components/SborkaArray";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
         <Route path="/assem" element={<Assembling />} />
         <Route path="/category/:id" element={<OneCategory/>} />
         <Route path="/assort" element={<Assortiment/>} />
+        <Route path="/sborki" element={<SborkaArray/>}/>
+        <Route path="sborki/sborka/:id" element={<Sborka/>}/>
 
       </Routes>
     </>

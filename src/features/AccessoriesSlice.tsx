@@ -9,8 +9,9 @@ export interface Accessories {
     category: string;
 }
 export interface AccessoriesState {
-    accessories: Accessories[];
-    error: string | null;
+   accessories:[],
+   error: string | null,
+   oneAccessori: []
 }
 
 export interface CreateAccessories {
@@ -20,9 +21,10 @@ export interface CreateAccessories {
     attributes: string;
     category: string;
 }
-const initialState: AccessoriesState = {
-    accessories: [],
-    error: null,
+const initialState : AccessoriesState ={
+    accessories:[],
+    oneAccessori: [],
+    error:null
 }
 
 export const fetchAccessories = createAsyncThunk(
@@ -61,6 +63,17 @@ export const fetchOneAccessories = createAsyncThunk("accessories/fetchOne",
             throw error; // Обработка ошибки
         }
     }
+)
+export const deleteOneAccessories = createAsyncThunk("delete/one",
+async (id)=>{
+    try {
+        const res = await axios.get(`http://localhost:4000/accessories/one/${id}`)
+        const accessories = res.data
+        return accessories
+    } catch (error) {
+        error
+    }
+}
 )
 
 export const createAccessories = createAsyncThunk(

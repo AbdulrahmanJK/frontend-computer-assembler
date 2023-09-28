@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategory } from "../features/CategorySlice";
 import { AppDispatch } from "../app/store";
 import style from '../css/assortiment.module.css'
-import { fetchAccessoriesCategory } from "../features/AccessoriesSlice";
 import { Link } from "react-router-dom";
 
 function Assortiment() {
@@ -19,7 +18,7 @@ function Assortiment() {
   return (
     <div className={style.rod_rod}>
     <div className={style.rod_assort}>
-    {category.map((item) => {
+    {category?.map((item) => {
       return (
        <Link to={`/category/${item._id}`}> <div   className={style.assort_block}>
         <div className={style.title}>

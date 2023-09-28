@@ -1,66 +1,69 @@
-.logo img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.logo img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid ;
 }
-.header {
-  background-color: #141414;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Cormorant Garamond", serif;
-  font-family: "Josefin Sans", sans-serif;
-  font-family: "Open Sans", sans-serif;
-  font-family: "Oswald", sans-serif;
-  position: relative;
-  z-index: 1;
+.header{
+    background-color: #141414;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Oswald', sans-serif;
+position: relative;
+z-index: 1;
 }
-.three_span {
-  display: flex;
-  justify-content: space-around;
-  width: 500px;
-  font-size: 20px;
-  color: #ffffff;
+.three_span{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    font-size: 20px;
+    color: #FFFFFF;
+ 
 }
-.three_span a {
-  text-decoration: none;
-  color: #ffffff;
+.three_span a{
+    text-decoration: none;
+    color: #FFFFFF;
+
 }
-.three_span a:hover {
-  color: #d3ae37;
+.three_span a:hover{
+    color: #d3ae37;
 }
 .cart {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  margin:0 15px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    margin-right: 10px;
 }
 .cart img {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 .shopCart {
-  position: absolute;
-  width: 450px;
-  min-height: 150px;
-  top: 65px;
-  background-color: cyan;
-  box-shadow: 20px -16px teal;
-  right: 50px;
-  z-index: 0;
+    position: absolute;
+    width: 450px;
+    min-height: 150px;
+    top: 65px;
+    background-color: cyan;
+    box-shadow: 20px -16px teal;
+    right: 50px;
+    z-index: 0;
 }
 .clearCartBtn {
-  background-color: #fc6a03; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+    background-color: #FC6A03; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .cartIcon{
     display: flex;

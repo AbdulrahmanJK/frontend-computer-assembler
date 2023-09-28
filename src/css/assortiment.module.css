@@ -26,7 +26,11 @@ font-family: 'Roboto Slab', serif;
 
 .assort_block:hover{
     transform: scale(1.1);
+    border: 2px solid #6629FF ;
 }
 .rod_assort a{
     text-decoration: none;
+}
+.title{
+margin-top: 10px;
 }

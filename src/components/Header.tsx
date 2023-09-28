@@ -28,24 +28,23 @@ function Header() {
       <div className={style.logo}>
         <img src={img1} alt="" />
       </div>
+
       <div className={style.three_span}>
-        <span>Компьютеры</span>
-        <Link to="assem">
-          {" "}
-          <span>Конфигуратор ПК</span>
-        </Link>
-        <Link to="assort">
-          {" "}
-          <span>Комплектующие</span>
-        </Link>
         <Link to="/">
           {" "}
           <span>Главная</span>
         </Link>
+        <Link to="assem">
+          {" "}
+          <span>Конфигуратор ПК</span>
+        </Link>
+        
+        <Link to="assort"> <span>Комплектующие</span></Link>
+      <Link to="sborki"> <span>Мои сборки</span></Link> 
       </div>
 
       <div className={style.cartIcon}>
-        <div className={style.cartIcon} onClick={toggleCart}>
+        <div onClick={toggleCart}>
           <button
             className={style.cart}
             onClick={() => {
@@ -54,9 +53,9 @@ function Header() {
           >
             <img src={cart2} />
           </button>
-          {/* Cart ({cartItemsCount}) */}
-          {isCartVisible && <Cart />}
         </div>
+
+        {isCartVisible && <Cart />}
         {getTok ? (
           <Link to="logroom">
             <img src={img2} alt="" />
@@ -66,8 +65,6 @@ function Header() {
             <img src={img2} alt="" />
           </Link>
         )}
-        <span></span>
-        <span></span>
       </div>
     </div>
   );

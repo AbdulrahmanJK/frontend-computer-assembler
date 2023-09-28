@@ -1,15 +1,20 @@
 .title{
     color: white;
     width: 290px;
-    height: 120px;
+    height: 140px;
     font-weight: 600;
     border: 0.1px solid #5a5664;
     display: flex;
     padding-left: 10px;
     padding-top: 10px;
     cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Space Grotesk', sans-serif; */
+    /* font-family: 'Rubik Mono One', sans-serif; */
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+
+
+    flex-wrap: wrap;
 }
 .title a{
     text-decoration: none;
@@ -27,12 +32,15 @@
 .rodblock_assem{
     display: flex;
     justify-content: center;
-    
+    width: auto;
    
 }
 .two_block img{
     width: 90px;
     height: 90px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+
 
 }
 .two_block{
@@ -47,6 +55,8 @@
     border-bottom: 1px solid #5a5664;
     padding: 20px;
     margin-left: 7%;
+    font-family: 'Space Grotesk', sans-serif;
+
 }
 .twoRod{
     margin-top: 90px;
@@ -84,3 +94,79 @@
     font-weight: bold;
     cursor: pointer;
 }
+.tit_img{
+    display: flex;
+    width: 270px;
+    
+}
+.image_acces img{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+width: 45px;
+height: 44px;
+}
+.title_acces{
+    margin-left: 15px;
+
+}
+.testDiv{
+    margin-left: 50px;
+    margin-top: 90px;
+   max-height: 800px;
+   width: 800px;
+}
+.switchThreeJs{
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 90px;
+}
+.switchThreeJs button{
+    color: white;
+
+}
+.sborka_tit{
+width: 200px;
+padding-top: 40px;
+
+
+
+}
+.sborka_tit input{
+height: 40px;
+width: 150px;
+padding: 7px;
+border-radius: 10px;
+margin-top: 20px;
+color: white;
+background-color: #242238;
+
+
+
+}
+.sborka_tit input:focus{
+    width: 200px;
+    border: 1px solid #6629FF;
+}
+.sborka_tit input::placeholder{
+    color: white;
+}
+.sborka_tit button{
+    padding: 8px;
+    color: white;
+    border: 2px solid #6629FF;
+    border-radius: 10px;
+    
+}
+.sborka_tit button:hover{
+    background: linear-gradient(to bottom right,#242238, #6629FF)
+
+}
+.rod_add{
+    justify-content: center;
+display: flex;
+
+}
+
+
+

@@ -23,7 +23,8 @@ useEffect(() => {
             return(
                 <div className={style.keys}>
                   <div className={style.image}><img src={item.image} alt="image" /> </div> 
-                  <div className={style.title}> {item.title}</div> 
+                  <div className={style.title}> {item.title}</div>
+                  <div className={style.price}><span>{item.price}₽</span></div> 
                   <div><button>Добавить в корзину</button></div>
                 </div>
             )
