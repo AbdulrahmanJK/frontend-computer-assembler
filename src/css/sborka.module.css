@@ -121,6 +121,7 @@
     align-items: center;
     flex-direction: column;
     width: 50%;
+   background-color: #29292b;
 }
 .sborki{
     width: 300px;

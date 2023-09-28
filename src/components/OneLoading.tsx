@@ -17,6 +17,7 @@ function OneLoading({ item, cartItems, addCart }) {
 
   return (
     <>
+    <div className={style.kkk}>
       <div className={style.keys}>
         <div className={style.image}>
           <img src={item.image} alt="image" />{" "}
@@ -36,6 +37,7 @@ function OneLoading({ item, cartItems, addCart }) {
           )}</>}
         </div>
       
+      </div>
       </div>
     </>
   );
