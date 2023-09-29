@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 interface LoginForm {
   email: string;
   password: string;
-  username?: string; // Добавляем опциональное поле username
+  username?: string;
 }
 
 const Login: React.FC = () => {
@@ -25,14 +25,31 @@ const Login: React.FC = () => {
     (state: RootState) => state.authReducer
   );
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState<string | null>(null); // Добавляем состояние для ошибки
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(signIn(formData));
+    dispatch(signIn(formData))
+      .then(() => {
+        // Вход успешен, очищаем ошибку
+        setLoginError(null);
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+        if (error.response && error.response.status === 401) {
+          // Ошибка 401 - Неправильный email или пароль
+          setLoginError("Неправильный email или пароль");
+        } else {
+          // Другая ошибка
+          setLoginError("Произошла ошибка при входе.");
+        }
+      });
   };
+
   if (token) {
     navigate("/");
   }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-96 p-8 bg-white rounded shadow-md">
@@ -42,11 +59,11 @@ const Login: React.FC = () => {
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
           </div>
         )}
-        {status === "failed" && <p className="text-red-500 mb-4">{error}</p>}
+        {loginError && <p className="text-red-500 mb-4">{loginError}</p>} {/* Выводим ошибку входа */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
-            required
+              required
               type="email"
               placeholder="Email"
               className="w-full p-2 border rounded"
@@ -58,7 +75,7 @@ const Login: React.FC = () => {
           </div>
           <div className="mb-4">
             <input
-            required
+              required
               type="password"
               placeholder="Password"
               className="w-full p-2 border rounded"
@@ -70,13 +87,17 @@ const Login: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            className="w-full bg-purple-500 text-white p-2 rounded hover:bg-purple-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Войти
           </button>
         </form>
         <p>Если вы еще не зарегистрированы: </p>
-        <Link to="/register">Регистрация</Link>
+        <button className="w-40 p-1 mt-2">
+          <Link to="/register" className="text-black hover:text-white">
+            Регистрация
+          </Link>
+        </button>
       </div>
     </div>
   );
