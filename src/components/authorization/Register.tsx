@@ -14,13 +14,16 @@ const Register: React.FC = () => {
     email: "",
     password: "",
   });
-
+  const [validationErrors, setValidationErrors] = useState<{
+    [key: string]: string;
+  }>({});
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registrationError, setRegistrationError] = useState<string | null>(
+    null
+  );
 
   const dispatch = useDispatch<AppDispatch>();
-  const { status, error } = useSelector(
-    (state: RootState) => state.authReducer
-  );
+  const { status } = useSelector((state: RootState) => state.authReducer);
 
   const navigate = useNavigate();
 
@@ -32,6 +35,14 @@ const Register: React.FC = () => {
       })
       .catch((error) => {
         console.error("Registration failed:", error);
+        if (error.response && error.response.status === 400) {
+          // Обработка ошибки 400 Bad Request
+          setValidationErrors(error.response.data.errors);
+        } else {
+          // Обработка других ошибок
+          setRegistrationError("Произошла ошибка при регистрации.");
+          setRegistrationSuccess(false); // Устанавливаем значение в false
+        }
       });
   };
 
@@ -44,36 +55,51 @@ const Register: React.FC = () => {
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
           </div>
         )}
-        {registrationSuccess && (
-          <p className="text-green-500 mb-4">Вы успешно зарегистрировались!</p>
-        )}
-        {status === "failed" && <p className="text-red-500 mb-4">{error}</p>}
+        <p
+          className={`mb-4 ${
+            registrationSuccess ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {registrationError ||
+            (registrationSuccess && "Вы успешно зарегистрировались!")}
+        </p>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
               type="email"
               placeholder="Email"
-              className="w-full p-2 border rounded"
+              className={`w-full p-2 border rounded ${
+                validationErrors.email ? "border-red-500" : ""
+              }`}
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
             />
+            {validationErrors.email && (
+              <p className="text-red-500 mt-1">{validationErrors.email}</p>
+            )}
           </div>
           <div className="mb-4">
             <input
               type="password"
               placeholder="Password"
-              className="w-full p-2 border rounded"
+              className={`w-full p-2 border rounded ${
+                validationErrors.password ? "border-red-500" : ""
+              }`}
               value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
             />
+            {validationErrors.password && (
+              <p className="text-red-500 mt-1">{validationErrors.password}</p>
+            )}
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            className="w-full bg-purple-500 text-white p-2 rounded hover:bg-purple-600"
           >
             Регистрация
           </button>

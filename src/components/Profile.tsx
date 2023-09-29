@@ -28,7 +28,7 @@ const Profile = () => {
     navigate("/");
     window.location.reload();
   };
-
+  console.log(user)
   useEffect(() => {
     if (token) {
       dispatch(fetchUserData(token)).then(() => {
@@ -67,7 +67,7 @@ const Profile = () => {
           </h2>
           <p className="text-white text-lg">{user?.email}</p>
           <p className="text-white mt-4">
-            Адрес: {user?.role ? user.role : "Не указан"}
+            Адрес: {user?.adress ? user.adress : "Не указан"}
           </p>
         </div>
         <div className=" mt-4">
@@ -87,7 +87,7 @@ const Profile = () => {
                 className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md mt-2 text-lg transform hover:scale-110 transition-transform duration-300"
                 onClick={handleAddAccessoryClick}
               >
-                Добавить аксессуары
+                Добавить комплектующие
               </button>
             </div>
           )}
