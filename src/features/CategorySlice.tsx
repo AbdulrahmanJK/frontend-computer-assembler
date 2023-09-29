@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const initialState ={
-    category:[]
+    category:[],
 }
 
 export const fetchCategory = createAsyncThunk(

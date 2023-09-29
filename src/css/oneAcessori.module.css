@@ -1,6 +1,8 @@
 .rod_block {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
+
 }
 .image img {
   width: 100px;
@@ -40,6 +42,7 @@
 .rod_rod {
   display: flex;
   justify-content: center;
+
 }
 .keys:hover {
   transform: scale(1.1);
@@ -60,4 +63,8 @@
   margin-top: 12px;
   color: white;
 
+}
+.kkk{
+  display: flex;
+  justify-content: center;
 }

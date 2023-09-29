@@ -128,3 +128,4 @@ const accessoriesSlice = createSlice({
 });
 
 export default accessoriesSlice.reducer;
+
