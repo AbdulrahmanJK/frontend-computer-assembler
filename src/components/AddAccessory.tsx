@@ -11,8 +11,9 @@ interface AddAccessoryProps {
 const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
   const dispatch = useDispatch();
   const category = useSelector((state: any) => state.categorySlice.category);
+  const [imageURL, setImageURL] = useState<string>('');
   const [accessoryData, setAccessoryData] = useState({
-    image: '',
+    image: '',  // Убедитесь, что здесь image начинается с пустой строки
     title: '',
     price: 0,
     attributes: '',
@@ -20,13 +21,25 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
   });
   const [error, setError] = useState<string | null>(null);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setAccessoryData({
-        ...accessoryData,
-        image: file,
-      });
+      try {
+        const formData = new FormData();
+        formData.append('image', file);
+        const { data } = await axios.post('http://localhost:4000/upload/img', formData);
+
+        // Обновляем URL изображения после успешной загрузки
+        setImageURL(`http://localhost:4000${data.url}`);
+
+        // Обновляем accessoryData, чтобы сохранить ссылку на изображение
+        setAccessoryData((prevData) => ({
+          ...prevData,
+          image: `http://localhost:4000${data.url}`,
+        }));
+      } catch (error) {
+        setError('Произошла ошибка при загрузке изображения.');
+      }
     }
   };
 
@@ -34,13 +47,8 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
-      formData.append('image', accessoryData.image);
-      const { data } = await axios.post('http://localhost:4000/upload/img', formData);
-
-      const imageUrl = data.url;
-
-      await dispatch(createAccessories({ ...accessoryData, image: imageUrl }));
+      // Теперь мы отправляем только ссылку на изображение, а не объект файла
+      await dispatch(createAccessories(accessoryData));
       onClose();
     } catch (error) {
       setError('Произошла ошибка при создании аксессуара.');

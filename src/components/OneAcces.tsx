@@ -9,7 +9,7 @@ function OneAcces({ id, handleOpen }) {
   const accessories = useSelector((state) => state.accessoriesSlice.accessories);
 
   const dispatch = useDispatch<AppDispatch>();
-
+  console.log(accessories)
   useEffect(() => {
     fetchOneAccessories(id);
   }, [dispatch]);
