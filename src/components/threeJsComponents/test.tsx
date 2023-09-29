@@ -71,6 +71,14 @@ console.log(modelslink);
         </PresentationControls>
 
         <fog attach="fog" args={["#d0d0d0", 11, 44]} />
+        {/* Окружающий свет */}
+        <ambientLight intensity={5} />
+        
+        {/* Направленный свет */}
+        <directionalLight 
+            position={[27, 10, 5]} 
+            intensity={5}
+        />
         {/* Легкий туман и тёмный фон */}
       </Canvas>
     </div>
