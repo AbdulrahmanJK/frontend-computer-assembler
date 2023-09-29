@@ -12,6 +12,7 @@ export interface AccessoriesState {
    accessories:[],
    error: string | null,
    oneAccessori: []
+
 }
 
 export interface CreateAccessories {
@@ -24,7 +25,8 @@ export interface CreateAccessories {
 const initialState : AccessoriesState ={
     accessories:[],
     oneAccessori: [],
-    error:null
+    error: null,
+    loading: false
 }
 
 export const fetchAccessories = createAsyncThunk(
@@ -107,34 +109,21 @@ const accessoriesSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchAccessories.fulfilled, (state, action) => {
-                state.accessories = action.payload
-                state.error = null; // Сбрасываем ошибку
-            })
-            .addCase(fetchAccessoriesCategory.fulfilled, (state, action) => {
-                state.accessories = action.payload
-                state.error = null; // Сбрасываем ошибку
-            })
-            .addCase(fetchOneAccessories.fulfilled, (state, action) => {
-                state.accessories = action.payload
-                state.error = null; // Сбрасываем ошибку
-            })
-            .addCase(createAccessories.fulfilled, (state, action) => {
-                state.accessories.unshift(action.payload);
-                state.error = null; // Сбрасываем ошибку
-            })
-            .addCase(fetchAccessories.rejected, (state, action) => {
-                state.error = "Ошибка при загрузке аксессуаров"; // Установка текста ошибки
-            })
-            .addCase(fetchAccessoriesCategory.rejected, (state, action) => {
-                state.error = "Ошибка при загрузке аксессуаров по категории"; // Установка текста ошибки
-            })
-            .addCase(fetchOneAccessories.rejected, (state, action) => {
-                state.error = "Ошибка при загрузке одного аксессуара"; // Установка текста ошибки
-            })
-            .addCase(createAccessories.rejected, (state, action) => {
-                state.error = "Ошибка при создании аксессуара"; // Установка текста ошибки
-            });
+        .addCase(fetchAccessories.fulfilled,(state,action)=>{
+            state.accessories = action.payload
+        })
+        .addCase(fetchAccessoriesCategory.fulfilled,(state,action)=>{
+            state.accessories = action.payload
+        })
+        .addCase(fetchOneAccessories.fulfilled,(state, action)=>{
+            
+            state.oneAccessori.unshift(action.payload)
+            
+        })
+        .addCase(deleteOneAccessories.fulfilled,(state, action)=>{
+            
+            state.oneAccessori = state.oneAccessori.filter((item) => item._id !== action.payload._id)
+        })
     },
 });
 

@@ -15,8 +15,7 @@ export const fetchCategory = createAsyncThunk(
             const data = await res.data
             return data
         } catch (error) {
-            console.log(error);
-             
+             error
         }
     }
 )

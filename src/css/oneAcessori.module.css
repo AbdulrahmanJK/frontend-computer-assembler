@@ -56,3 +56,8 @@
     display: flex;
     justify-content: center;
 }
+.but_load {
+  margin-top: 12px;
+  color: white;
+
+}
