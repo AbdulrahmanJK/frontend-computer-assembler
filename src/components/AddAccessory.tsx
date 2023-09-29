@@ -10,9 +10,10 @@ interface AddAccessoryProps {
 
 const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
   const dispatch = useDispatch();
-  const category = useSelector((state) => state.categorySlice.category);
+  const category = useSelector((state: any) => state.categorySlice.category);
+  const [imageURL, setImageURL] = useState<string>('');
   const [accessoryData, setAccessoryData] = useState({
-    image: '',
+    image: '',  // Убедитесь, что здесь image начинается с пустой строки
     title: '',
     price: 0,
     attributes: '',
@@ -20,13 +21,25 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
   });
   const [error, setError] = useState<string | null>(null);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setAccessoryData({
-        ...accessoryData,
-        image: file,
-      });
+      try {
+        const formData = new FormData();
+        formData.append('image', file);
+        const { data } = await axios.post('http://localhost:4000/upload/img', formData);
+
+        // Обновляем URL изображения после успешной загрузки
+        setImageURL(`http://localhost:4000${data.url}`);
+
+        // Обновляем accessoryData, чтобы сохранить ссылку на изображение
+        setAccessoryData((prevData) => ({
+          ...prevData,
+          image: `http://localhost:4000${data.url}`,
+        }));
+      } catch (error) {
+        setError('Произошла ошибка при загрузке изображения.');
+      }
     }
   };
 
@@ -34,18 +47,8 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
-      formData.append('image', accessoryData.image);
-
-      const response = await axios.post('http://localhost:4000/upload/img', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const imageUrl = response.data.url;
-
-      await dispatch(createAccessories({ ...accessoryData, image: imageUrl }));
+      // Теперь мы отправляем только ссылку на изображение, а не объект файла
+      await dispatch(createAccessories(accessoryData));
       onClose();
     } catch (error) {
       setError('Произошла ошибка при создании аксессуара.');
@@ -71,13 +74,15 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="bg-white w-96 rounded-lg shadow-xl">
         <div className="p-4">
-          <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            onClick={onClose}
-          >
-            Закрыть &#10006;
-          </button>
-          <h3 className="text-2xl font-semibold mb-4">Добавить аксессуар</h3>
+          <div className='mb-4 text-right'>
+            <button
+              className=" text-gray-500 hover:text-gray-700 text-right"
+              onClick={onClose}
+            >
+              &#10006;
+            </button>
+          </div>
+          <h3 className="text-2xl font-semibold mb-4">Добавить комплектующие</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2">
@@ -137,7 +142,7 @@ const AddAccessory: React.FC<AddAccessoryProps> = ({ onClose }) => {
                 className="w-full rounded border border-gray-300 py-2 px-3 focus:outline-none focus:border-blue-500"
               >
                 <option value="">Выберите категорию</option>
-                {category.map((item) => (
+                {category.map((item: any) => (
                   <option key={item._id} value={item._id}>
                     {item.title}
                   </option>
